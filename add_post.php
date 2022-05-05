@@ -1,6 +1,6 @@
 <?php
-$link=mysqli_connect("localhost","root");
-mysqli_select_db($link,"sa");
+$link=mysqli_connect("localhost","root","","sa");
+
 $post_type = $_POST["post_type"];
 $item_name = $_POST["item_name"];
 $item_describe = $_POST["item_describe"];
