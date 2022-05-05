@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <?php session_start();
-
+echo "123";
 $searchtxt=$_GET["search"];
 
 $labeltxt=$_GET["label"];
-
-
-
 
 ?>
 <html>
@@ -251,7 +248,7 @@ $labeltxt=$_GET["label"];
                 </div>
                 <!-- PRODUCT-->
                   <!--  Modal -->
-                  
+                
                 <?php
                 // $link=mysqli_connect("localhost","root","12345678","sa");
 	              $link=mysqli_connect("localhost","root");
