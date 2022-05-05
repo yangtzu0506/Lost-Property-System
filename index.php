@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <?php session_start();
-
 $searchtxt=$_GET["search"];
-
 $labeltxt=$_GET["label"];
-
-
-
-
 ?>
 <html>
   <head>
@@ -287,7 +281,9 @@ $labeltxt=$_GET["label"];
                       $img=$record[6];
                       $confirm = $record[7];
                       ?>
-                      <div class="modal fade" id="<?php echo $name?>" tabindex="-1">
+
+      <!-- 詳細資料彈窗 -->
+      <div class="modal fade" id="<?php echo $name?>" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content overflow-hidden border-0">
             <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -312,7 +308,35 @@ $labeltxt=$_GET["label"];
             </div>
           </div>
         </div>
-      </div><?php ?>
+      </div>
+      <!-- 編輯資料彈窗 -->
+      <div class="modal fade" id="<?php echo $name?>edit" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content overflow-hidden border-0">
+            <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-0">
+              <div class="row align-items-stretch">
+                <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style="background: url(<?php echo $img?>)" href="<?php echo $img?>" data-gallery="gallery1" data-glightbox="<?php echo $name?>"></a></div>
+                <div class="col-lg-6">
+                  <div class="p-4 my-md-4">
+                    <form method="post" action="index.php">
+                    <h4 class="h4">名稱</h4><input class="form-control form-control" type="text" name="item_name" value=<?php echo $name?>>
+                    <p class="text-muted">敘述</p><input class="form-control form-control-lg" type="text" name="item-text" value=<?php echo $text?>>
+                    <p class="text-mb mb-4">遺失時間：<?php echo $time?></p>
+                    <div class="row align-items-stretch mb-4 gx-0">
+                      <div class="col-sm-7">
+                      <p class="text-mb mb-4">遺失地點：<?php echo $place?></p>
+                      <p class="text-mb mb-4">標籤：<?php echo $label?></p>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
                     <div class='col-lg-4 col-sm-6'>
                     <div class='product text-center'>
@@ -322,7 +346,10 @@ $labeltxt=$_GET["label"];
                           <ul class='mb-0 list-inline'>
                     
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='cart.html'>認領</a></li>
-                            <li class='list-inline-item mr-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'><i class='fas fa-expand'></i></a></li>
+                            <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'><i class='fas fa-expand'></i></a></li>
+                            <?php if($_SESSION["level"]=='1'){ ?>
+                            <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='#<?php echo $name?>edit' data-bs-toggle='modal'><i class='fas fa-edit'></i></a></li>
+                          <?php }?>
                           </ul>
                         </div>
                       </div>
