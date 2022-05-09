@@ -200,10 +200,24 @@ if(!isset($_SESSION["level"])){
         
               }
             }
+            function postType(e){
+              type=e;
+              sinner="";
+              if(type=="尋物啟事"){
+                var type=document.getElementById("type");
+                sinner+="<h2 class='h5 text-uppercase mb-4'>發布尋物啟事</h2>";
+                type.innerHTML=sinner;
+        
+              }else{
+                var type=document.getElementById("type");
+                sinner+="<h2 class='h5 text-uppercase mb-4'>發布拾獲貼文</h2>";
+                type.innerHTML=sinner;
+              }
+            }
                   </script>
         <section class="py-5">
           <!-- BILLING ADDRESS-->
-          <h2 class="h5 text-uppercase mb-4">發布尋物啟事</h2>
+          <div id="type"><h2 class="h5 text-uppercase mb-4">發布尋物啟事</h2></div>
           <div class="row">
             <div class="col-lg-12">
               
@@ -211,8 +225,8 @@ if(!isset($_SESSION["level"])){
               <form action="add_post.php?account_id=<?php echo $account_id?>" method="post" enctype="multipart/form-data"> 
                 <div class="row gy-3">
                 <div class="col-lg-12 form-group">
-                    <label class="form-label text-sm text-uppercase" for="">發布貼文類型:</label>
-                    <select class="selectpicker show-tick form-control" name="post_type" data-customclass="form-control form-control-lg rounded-0" value="貼文類型">
+                    <label class="form-label text-sm text-uppercase" for="">發布貼文類型</label>
+                    <select class="selectpicker show-tick form-control" name="post_type" data-customclass="form-control form-control-lg rounded-0" value="貼文類型" onchange="postType(this.value)">
                       <option disabled selected >貼文類型</option>
                       <option value="尋物啟事">尋物啟事</option>
                       <option value="拾獲貼文">拾獲貼文</option>
