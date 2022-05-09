@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php session_start();
+$account_id=$_SESSION['account'];
 
 if(!isset($_SESSION["level"])){ 
   
@@ -173,17 +174,32 @@ if(!isset($_SESSION["level"])){
               case "文教用品":
               index=7;
               break;
+              case "其他":
+              index=8;
+              break;
             }
-    
+            //換標籤內的選項
             var Sinner="";
-            for(var i=0;i<sectors[index].length;i++){
-              
+            if(index==8){
+            var otherselect=document.getElementById("other");
+            Sinner=Sinner+"<input type='text' class='form-control form-control' name='item_label' placeholder='請輸入標籤類別'>";
+            otherselect.innerHTML=Sinner;
+            index=0;
+            
+            }else{
+              var otherselect=document.getElementById("other");
+              Sinner="<select class='show-tick form-control' id='labelSelect' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
+              otherselect.innerHTML=Sinner;
+              var Sinner="";
+
+              for(var i=0;i<sectors[index].length;i++){
                 Sinner=Sinner+'<option value='+sectors[index][i]+'>'+sectors[index][i]+'</option>';
                           }
             var sectorSelect=document.getElementById("labelSelect");
             sectorSelect.innerHTML=Sinner;
         
               }
+            }
                   </script>
         <section class="py-5">
           <!-- BILLING ADDRESS-->
@@ -192,7 +208,7 @@ if(!isset($_SESSION["level"])){
             <div class="col-lg-12">
               
               <!-- 發布貼文表單開始 -->
-              <form action="add_post.php" method="post" enctype="multipart/form-data"> 
+              <form action="add_post.php?account_id=<?php echo $account_id?>" method="post" enctype="multipart/form-data"> 
                 <div class="row gy-3">
                 <div class="col-lg-12 form-group">
                     <label class="form-label text-sm text-uppercase" for="">發布貼文類型:</label>
@@ -235,8 +251,10 @@ if(!isset($_SESSION["level"])){
                   <label class="btn btn-outline-info" for="隨身物品">隨身物品</label>&nbsp&nbsp
                   <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="ff" value="文教用品" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="文教用品">文教用品</label>&nbsp&nbsp
+                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="ff" value="其他" onchange="label(this.value)">
+                  <label class="btn btn-outline-info" for="其他">其他</label>&nbsp&nbsp
                 </div>
-                <div class="col-lg-12 form-group">
+                <div class="col-lg-12 form-group" id="other">
                     <select class="show-tick form-control" id="labelSelect" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
                     <option disabled selected >請選擇標籤</option> 
                   </select>

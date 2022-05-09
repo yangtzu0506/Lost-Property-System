@@ -38,37 +38,37 @@ $labeltxt=$_GET["label"];
             <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>-->
-               <!-- </li> -->
+                <!-- 使用者權限 索引列-->
                <?php if($_SESSION["level"]=='0'){ ?>                       
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link active" href="index.php">拾獲貼文</a>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="find.php" aria-haspopup="true" aria-expanded="false">尋物啟示清單</a>
-                  
-                </li>
-                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="post.php"  aria-haspopup="true" aria-expanded="false">發布貼文</a>
-                  
-                </li>
+                <li class="nav-item"><a class="nav-link active" href="index.php">拾獲貼文</a></li>
+                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
+                <li class="nav-item"><a class="nav-link"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-                <li class="nav-item"><a class="nav-link" href="login/logout.php"> <i class="fas fa-user me-1 text-gray fw-normal"></i><?php  echo $_SESSION["name"];?> , 登出</a></li>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                </li>
+              </ul>
+
+              <!-- 管理者權限 索引列-->
                 <?php }else if($_SESSION["level"]=='1'){ ?>
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link active" href="index.php">拾獲物管理</a>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">尋物啟示管理</a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html"></a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">貼文審核</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                 </li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-                <li class="nav-item"><a class="nav-link" href="login/logout.php"> <i class="fas fa-user me-1 text-gray fw-normal"></i><?php  echo $_SESSION["name"];?> , 登出</a></li>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                </li>
+              </ul>
+                <!-- 未登入 索引列-->
                 <?php }else{?>
-
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link active" href="index.php">拾獲貼文</a>
                 </li>
@@ -76,12 +76,10 @@ $labeltxt=$_GET["label"];
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="post.php"  aria-haspopup="true" aria-expanded="false">發布貼文</a>
-                 
                 </li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-               
-                <li class="nav-item"><a class="nav-link" href="login/login.php"> <i class="fas fa-user me-1 text-gray fw-normal"></i>登入</a></li>
+                <li class="nav-item"><a class="nav-link" href="login/login.php"><i class="fas fa-user me-1 text-gray fw-normal"></i>登入</a></li>
               <?php }?>
               </ul>
             </div>
@@ -264,10 +262,11 @@ $labeltxt=$_GET["label"];
 	              else
 	              {
               
-                $sql="select * from item";
+                $sql="select * from item where item_id like '1%'";
 		            }
                 $all="select * from item";
                 $all_rs=mysqli_query($link,$all);
+
                 $rs=mysqli_query($link,$sql);
 	              //$rs=mysql_query($sql,$link);
 
@@ -285,6 +284,8 @@ $labeltxt=$_GET["label"];
                       $label=$record[5];
                       $img=$record[6];
                       $confirm = $record[7];
+                      $account_id = $record[8];
+
                       ?>
 
       <!-- 詳細資料彈窗 -->
@@ -305,9 +306,12 @@ $labeltxt=$_GET["label"];
                       <div class="col-sm-7">
                       <p class="text-mb mb-4">遺失地點：<?php echo $place?></p>
                       <p class="text-mb mb-4">標籤：<?php echo $label?></p>
+                     
                       </div>
-                    </div><a class="btn btn-sm btn-outline-dark" href="cart.html">認領</a>
+                      <a class="btn btn-sm btn-outline-dark" href="cart.html">認領</a> 
+                    </div>
                   </div>
+                  <p align=right class="text-muted" style="margin-right:30px">使用者名稱：<?php echo $account_id?></p>
                 </div>
               </div>
             </div>
@@ -352,17 +356,33 @@ $labeltxt=$_GET["label"];
               case "文教用品":
               index=7;
               break;
+              case "其他":
+              index=8;
+              break;
             }
     
-            var Sinner="";
-            for(var i=0;i<sectors[index].length;i++){
-              
+           //換標籤內的選項
+           var Sinner="";
+            if(index==8){
+            var otherselect=document.getElementById("other");
+            Sinner=Sinner+"<input type='text' class='form-control form-control' name='item_label' placeholder='請輸入標籤類別'>";
+            otherselect.innerHTML=Sinner;
+            index=0;
+            
+            }else{
+              var otherselect=document.getElementById("other");
+              Sinner="<select class='show-tick form-control' id='labelSelect' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
+              otherselect.innerHTML=Sinner;
+              var Sinner="";
+
+              for(var i=0;i<sectors[index].length;i++){
                 Sinner=Sinner+'<option value='+sectors[index][i]+'>'+sectors[index][i]+'</option>';
                           }
             var sectorSelect=document.getElementById("labelSelect");
             sectorSelect.innerHTML=Sinner;
         
               }
+            }
                   </script>
       <div class="modal fade" id="<?php echo $name?>edit" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -395,9 +415,11 @@ $labeltxt=$_GET["label"];
                   <label class="btn btn-outline-info" for="隨身物品">隨身物品</label>&nbsp&nbsp
                   <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="ff" value="文教用品" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="文教用品">文教用品</label>&nbsp&nbsp
+                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="ff" value="其他" onchange="label(this.value)">
+                  <label class="btn btn-outline-info" for="其他">其他</label>&nbsp&nbsp
                 </div>
                 
-                <div class="col-lg-12 form-group">
+                <div class="col-lg-12 form-group" id="other">
                     <select class="show-tick form-control" id="labelSelect" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
                     <option disabled selected >請選擇標籤</option> 
                   </select>
@@ -421,7 +443,8 @@ $labeltxt=$_GET["label"];
                           <ul class='mb-0 list-inline'>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='cart.html'>認領</a></li>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'><i class='fas fa-expand'></i></a></li>
-                            <?php if($_SESSION["level"]=='1'){ ?>
+                            <?php  //若權限為1(管理者) 或 權限為0(使用者)且 刊登帳號=登入帳號 且 尚未通過認證 即可編輯
+                            if($_SESSION["level"]=='1' || ($_SESSION["level"]=='0' && $_SESSION["account"]==$account_id && $confirm==0)){ ?>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='#<?php echo $name?>edit' data-bs-toggle='modal'><i class='fas fa-edit'></i></a></li>
                           <?php }?>
                           </ul>
