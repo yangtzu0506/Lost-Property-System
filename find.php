@@ -266,9 +266,9 @@ $labeltxt=$_GET["label"];
 	              else
 	              {
               
-                $sql="select * from item";
+                $sql="select * from item where item_id like '2%'";
 		            }
-                $all="select * from item";
+                $all="select * from item where item_id like '2%'";
                 $all_rs=mysqli_query($link,$all);
                 $rs=mysqli_query($link,$sql);
 	              //$rs=mysql_query($sql,$link);
@@ -286,6 +286,7 @@ $labeltxt=$_GET["label"];
                       $label=$record[5];
                       $img=$record[6];
                       $confirm = $record[7];
+                      $account_id = $record[8];
                       ?>
                       <div class="modal fade" id="<?php echo $name?>" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -305,9 +306,12 @@ $labeltxt=$_GET["label"];
                       <p class="text-mb mb-4">遺失地點：<?php echo $place?></p>
                       <p class="text-mb mb-4">標籤：<?php echo $label?></p>
                       </div>
-                    </div><a class="btn btn-sm btn-outline-dark" href="cart.html">認領</a>
+                      <a class="btn btn-sm btn-outline-dark" href="cart.html">認領</a>
+                    </div>
                   </div>
+                  <p align=right class="text-muted" style="margin-right:30px">使用者名稱：<?php echo $account_id?></p>
                 </div>
+              
               </div>
             </div>
           </div>

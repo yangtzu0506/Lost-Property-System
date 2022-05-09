@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php session_start();
+$account_id=$_SESSION['account'];
 
 if(!isset($_SESSION["level"])){ 
   
@@ -177,7 +178,7 @@ if(!isset($_SESSION["level"])){
               index=8;
               break;
             }
-            
+            //換標籤內的選項
             var Sinner="";
             if(index==8){
             var otherselect=document.getElementById("other");
@@ -207,7 +208,7 @@ if(!isset($_SESSION["level"])){
             <div class="col-lg-12">
               
               <!-- 發布貼文表單開始 -->
-              <form action="add_post.php" method="post" enctype="multipart/form-data"> 
+              <form action="add_post.php?account_id=<?php echo $account_id?>" method="post" enctype="multipart/form-data"> 
                 <div class="row gy-3">
                 <div class="col-lg-12 form-group">
                     <label class="form-label text-sm text-uppercase" for="">發布貼文類型:</label>

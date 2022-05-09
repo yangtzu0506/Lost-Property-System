@@ -1,6 +1,6 @@
 <?php
 $link=mysqli_connect("localhost","root","","sa");
-
+$account_id=$_GET["account_id"];
 $post_type = $_POST["post_type"];
 $item_name = $_POST["item_name"];
 $item_text = $_POST["item_text"];
@@ -31,7 +31,7 @@ if($_FILES['item_img']['error'] === UPLOAD_ERR_OK){
     
     # 將檔案移至指定位置
     move_uploaded_file($_FILES["item_img"]["tmp_name"],'img/'.$_FILES["item_img"]["name"]);
-    $sql="INSERT INTO item (item_id,item_name,item_text,item_time,item_place,item_label,item_img,item_confirm) VALUES ($item_id,'$item_name','$item_text','$item_time','$item_place','$item_label','$dest',$item_confirm)";
+    $sql="INSERT INTO item (item_id,item_name,item_text,item_time,item_place,item_label,item_img,item_confirm,account_id) VALUES ($item_id,'$item_name','$item_text','$item_time','$item_place','$item_label','$dest',$item_confirm,$account_id)";
     if(mysqli_query($link,$sql)){ ?>
     <script>
         alert("上傳成功!");
