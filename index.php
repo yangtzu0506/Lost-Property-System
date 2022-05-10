@@ -358,7 +358,6 @@ $labeltxt=$_GET["label"];
               index=8;
               break;
             }
-    
            //換標籤內的選項
            var Sinner="";
             if(index==8){
@@ -366,7 +365,7 @@ $labeltxt=$_GET["label"];
             Sinner=Sinner+"<input type='text' class='form-control form-control' name='item_label' placeholder='請輸入標籤類別'>";
             otherselect.innerHTML=Sinner;
             index=0;
-            
+            alert(Sinner);
             }else{
               var otherselect=document.getElementById("other");
               Sinner="<select class='show-tick form-control' id='labelSelect' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
@@ -378,10 +377,10 @@ $labeltxt=$_GET["label"];
                           }
             var sectorSelect=document.getElementById("labelSelect");
             sectorSelect.innerHTML=Sinner;
-            
+            alert(Sinner);
               }
             }
-                  </script>
+             </script>
       <div class="modal fade" id="<?php echo $name?>edit" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content overflow-hidden border-0">
@@ -397,8 +396,9 @@ $labeltxt=$_GET["label"];
                     <label class="text-muted">遺失時間</label><input class="form-control" type="datetime-local" name="item_time" value=<?php echo $time?>>
                     <div class="row align-items-stretch mb-4 gx-0"> 
                     <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?>>
-                    <div class="col-lg-12 btn-group-toggle" id="labelName" >
-                  <label class="form-label text-muted" for="">標籤 </label><br>
+                    
+                  <div class="col-lg-12 btn-group-toggle" id="labelName" >
+                  <label class="form-label text-sm text-uppercase" for="">標籤</label><br>
                   <input type="radio" class="btn-check" name="btnradio" id="衣物" autocomplete="off" value="衣物" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="衣物">衣物</label>&nbsp&nbsp
                   <input type="radio" class="btn-check" name="btnradio" id="配件" autocomplete="off" value="配件" onchange="label(this.value)">
@@ -411,21 +411,22 @@ $labeltxt=$_GET["label"];
                   <label class="btn btn-outline-info" for="包包">包包</label>&nbsp&nbsp
                   <input type="radio" class="btn-check" name="btnradio" id="隨身物品" autocomplete="off" value="隨身物品" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="隨身物品">隨身物品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="ff" value="文教用品" onchange="label(this.value)">
+                  <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="off" value="文教用品" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="文教用品">文教用品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="ff" value="其他" onchange="label(this.value)">
+                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="off" value="其他" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="其他">其他</label>&nbsp&nbsp
                 </div>
                 
                 <div class="col-lg-12 form-group" id="other">
                     <select class="show-tick form-control" id="labelSelect" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
-                    <option disabled selected >請選擇標籤</option> 
-                  </select>
+                    <option disabled>請選擇標籤</option> 
+                  </select> 
+                  
                   </div>
                     </div>
                   <input type="submit" class="btn btn-info" value="儲存">
                     </form>
-                  </div>
+                    </div>
                 </div>
               </div>
             </div>
