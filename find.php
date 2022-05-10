@@ -36,7 +36,7 @@ $labeltxt=$_GET["label"];
     <link rel="shortcut icon" href="img/favicon.png">
   </head>
   <body>
-    <div class="page-holder">
+  <div class="page-holder">
       <!-- navbar-->
       <header class="header bg-white">
         <div class="container px-lg-3">
@@ -44,33 +44,37 @@ $labeltxt=$_GET["label"];
             <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>-->
-               <!-- </li> -->
+                <!-- 使用者權限 索引列-->
                <?php if($_SESSION["level"]=='0'){ ?>                       
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="index.php">拾獲貼文</a>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link active" href="find.php" id="pagesDropdown" href="#" aria-haspopup="true" aria-expanded="false">尋物啟示清單</a></li>
-                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="post.php"  aria-haspopup="true" aria-expanded="false">發布貼文</a>
-                  
-                </li>
+                <li class="nav-item"><a class="nav-link" href="index.php">拾獲貼文</a></li>
+                <li class="nav-item"><a class="nav-link active" href="find.php">尋物啟示清單</a></li>
+                <li class="nav-item"><a class="nav-link"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-                <li class="nav-item"><a class="nav-link" href="login/logout.php"> <i class="fas fa-user me-1 text-gray fw-normal"></i><?php  echo $_SESSION["name"];?> , 登出</a></li>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                </li>
+              </ul>
+
+              <!-- 管理者權限 索引列-->
                 <?php }else if($_SESSION["level"]=='1'){ ?>
                   <li class="nav-item">
-                  <!-- Link--><a class="nav-link active" href="index.php">拾獲物管理</a>
+                  <!-- Link--><a class="nav-link" href="index.php">拾獲物管理</a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">尋物啟示管理</a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">尋物啟示管理</a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">貼文審核</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">貼文審核</a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
-                </li>
+                <li class="nav-item"><a class="nav-link"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-                <li class="nav-item"><a class="nav-link" href="login/logout.php"> <i class="fas fa-user me-1 text-gray fw-normal"></i><?php  echo $_SESSION["name"];?> , 登出</a></li>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                </li>
+              </ul>
+                
                 <?php }else{?>
 
                   <li class="nav-item">

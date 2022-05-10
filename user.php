@@ -46,7 +46,7 @@ $labeltxt=$_GET["label"];
               </ul>
               <ul class="navbar-nav ms-auto">               
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="user.php">個人化</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
                 </li>
               </ul>
 
@@ -58,7 +58,8 @@ $labeltxt=$_GET["label"];
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">尋物啟示管理</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="confirm.php"  aria-haspopup="true" aria-expanded="false">貼文審核</a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">貼文審核</a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                 </li>
               </ul>
               <ul class="navbar-nav ms-auto">               
@@ -92,7 +93,7 @@ $labeltxt=$_GET["label"];
           <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
               <div class="col-lg-6">
-                <h1 class="h2 text-uppercase mb-0">遺失物清單</h1>
+                <h1 class="h2 text-uppercase mb-0">使用者</h1>
               </div>
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
@@ -111,13 +112,10 @@ $labeltxt=$_GET["label"];
               <!-- SHOP SIDEBAR-->
               <div class="col-lg-3 order-2 order-lg-1">
                 <h5 class="text-uppercase mb-4">類別</h5>
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">衣物</strong></div>
+                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">使用者名稱</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=外套">外套</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=上衣">上衣</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=褲子">褲子</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=襪子">襪子</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=鞋子">鞋子</a></li>
+                 
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=鞋子">12345</a></li>
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">配件</strong></div>
@@ -242,16 +240,15 @@ $labeltxt=$_GET["label"];
                 </div>
                 <!-- PRODUCT-->
                   <!--  Modal -->
-                  
+                
                 <?php
-                $link=mysqli_connect("localhost","root","12345678","sa");
+                // $link=mysqli_connect("localhost","root","12345678","sa");
+	              $link=mysqli_connect("localhost","root");
+                mysqli_select_db($link,"sa");
+                
                 if(isset($labeltxt)){
-
                 $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
                
-
-        
-
                 }
 	              else if($searchtxt!="")
 	              {
@@ -321,7 +318,9 @@ $labeltxt=$_GET["label"];
       <!-- 編輯資料彈窗 -->
       <script type="text/javascript">
             function label(e){
-            var label=e;
+              
+              var label=e;
+            
             var sectors=new Array();
             sectors[0]=['請選擇標籤'];
             sectors[1]=['外套','上衣','褲子','襪子','鞋子'];
@@ -358,6 +357,7 @@ $labeltxt=$_GET["label"];
               index=8;
               break;
             }
+    
            //換標籤內的選項
            var Sinner="";
             if(index==8){
@@ -365,7 +365,7 @@ $labeltxt=$_GET["label"];
             Sinner=Sinner+"<input type='text' class='form-control form-control' name='item_label' placeholder='請輸入標籤類別'>";
             otherselect.innerHTML=Sinner;
             index=0;
-            alert(Sinner);
+            
             }else{
               var otherselect=document.getElementById("other");
               Sinner="<select class='show-tick form-control' id='labelSelect' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
@@ -377,10 +377,10 @@ $labeltxt=$_GET["label"];
                           }
             var sectorSelect=document.getElementById("labelSelect");
             sectorSelect.innerHTML=Sinner;
-            alert(Sinner);
+        
               }
             }
-             </script>
+                  </script>
       <div class="modal fade" id="<?php echo $name?>edit" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content overflow-hidden border-0">
@@ -396,9 +396,8 @@ $labeltxt=$_GET["label"];
                     <label class="text-muted">遺失時間</label><input class="form-control" type="datetime-local" name="item_time" value=<?php echo $time?>>
                     <div class="row align-items-stretch mb-4 gx-0"> 
                     <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?>>
-                    
-                  <div class="col-lg-12 btn-group-toggle" id="labelName" >
-                  <label class="form-label text-sm text-uppercase" for="">標籤</label><br>
+                    <div class="col-lg-12 btn-group-toggle" id="labelName" >
+                  <label class="form-label text-muted" for="">標籤 </label><br>
                   <input type="radio" class="btn-check" name="btnradio" id="衣物" autocomplete="off" value="衣物" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="衣物">衣物</label>&nbsp&nbsp
                   <input type="radio" class="btn-check" name="btnradio" id="配件" autocomplete="off" value="配件" onchange="label(this.value)">
@@ -411,22 +410,21 @@ $labeltxt=$_GET["label"];
                   <label class="btn btn-outline-info" for="包包">包包</label>&nbsp&nbsp
                   <input type="radio" class="btn-check" name="btnradio" id="隨身物品" autocomplete="off" value="隨身物品" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="隨身物品">隨身物品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="off" value="文教用品" onchange="label(this.value)">
+                  <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="ff" value="文教用品" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="文教用品">文教用品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="off" value="其他" onchange="label(this.value)">
+                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="ff" value="其他" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="其他">其他</label>&nbsp&nbsp
                 </div>
                 
                 <div class="col-lg-12 form-group" id="other">
                     <select class="show-tick form-control" id="labelSelect" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
-                    <option disabled>請選擇標籤</option> 
-                  </select> 
-                  
+                    <option disabled selected >請選擇標籤</option> 
+                  </select>
                   </div>
                     </div>
                   <input type="submit" class="btn btn-info" value="儲存">
                     </form>
-                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -440,7 +438,7 @@ $labeltxt=$_GET["label"];
                         <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證"; } ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" alt='...'></a>
                         <div class='product-overlay'>
                           <ul class='mb-0 list-inline'>
-                            <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='confirm.php'>認領</a></li>
+                            <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='cart.html'>認領</a></li>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'><i class='fas fa-expand'></i></a></li>
                             <?php  //若權限為1(管理者) 或 權限為0(使用者)且 刊登帳號=登入帳號 且 尚未通過認證 即可編輯
                             if($_SESSION["level"]=='1' || ($_SESSION["level"]=='0' && $_SESSION["account"]==$account_id && $confirm==0)){ ?>

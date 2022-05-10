@@ -46,37 +46,37 @@ if(!isset($_SESSION["level"])){
             <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>-->
-               <!-- </li> -->
+                <!-- 使用者權限 索引列-->
                <?php if($_SESSION["level"]=='0'){ ?>                       
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="index.php">拾獲貼文</a>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="find.php" aria-haspopup="true" aria-expanded="false">尋物啟示清單</a>
-                  
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link active" id="pagesDropdown" href="post.php" aria-haspopup="true" aria-expanded="false">發布貼文</a>
-                 
-                </li>
+                <li class="nav-item"><a class="nav-link" href="index.php">拾獲貼文</a></li>
+                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
+                <li class="nav-item"><a class="nav-link active"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-                <li class="nav-item"><a class="nav-link" href="login/logout.php"> <i class="fas fa-user me-1 text-gray fw-normal"></i><?php  echo $_SESSION["name"];?> , 登出</a></li>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                </li>
+              </ul>
+
+              <!-- 管理者權限 索引列-->
                 <?php }else if($_SESSION["level"]=='1'){ ?>
                   <li class="nav-item">
-                  <!-- Link--><a class="nav-link active" href="index.php">拾獲物管理</a>
+                  <!-- Link--><a class="nav-link" href="index.php">拾獲物管理</a>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">尋物啟示管理</a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">貼文審核</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="checkout.php" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">貼文審核</a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
-                </li>
+                <li class="nav-item"><a class="nav-link active"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-                <li class="nav-item"><a class="nav-link" href="login/logout.php"> <i class="fas fa-user me-1 text-gray fw-normal"></i><?php  echo $_SESSION["name"];?> , 登出</a></li>
-               
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                </li>
               </ul>
+                
               <?php }?>
             </div>
           </nav>
@@ -139,9 +139,7 @@ if(!isset($_SESSION["level"])){
         </section>
         <script type="text/javascript">
             function label(e){
-              
-              var label=e;
-            
+            var label=e;
             var sectors=new Array();
             sectors[0]=['請選擇標籤'];
             sectors[1]=['外套','上衣','褲子','襪子','鞋子'];
@@ -188,22 +186,36 @@ if(!isset($_SESSION["level"])){
             
             }else{
               var otherselect=document.getElementById("other");
-              Sinner="<select class='show-tick form-control' id='labelSelect' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
+              Sinner="<select class='show-tick form-control' id='selectLabel' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
               otherselect.innerHTML=Sinner;
               var Sinner="";
 
               for(var i=0;i<sectors[index].length;i++){
                 Sinner=Sinner+'<option value='+sectors[index][i]+'>'+sectors[index][i]+'</option>';
                           }
-            var sectorSelect=document.getElementById("labelSelect");
+            var sectorSelect=document.getElementById("selectLabel");
             sectorSelect.innerHTML=Sinner;
+
+              }
+            }
+            function postType(e){
+              type=e;
+              sinner="";
+              if(type=="尋物啟事"){
+                var type=document.getElementById("type");
+                sinner+="<h2 class='h5 text-uppercase mb-4'>發布尋物啟事</h2>";
+                type.innerHTML=sinner;
         
+              }else{
+                var type=document.getElementById("type");
+                sinner+="<h2 class='h5 text-uppercase mb-4'>發布拾獲貼文</h2>";
+                type.innerHTML=sinner;
               }
             }
                   </script>
         <section class="py-5">
           <!-- BILLING ADDRESS-->
-          <h2 class="h5 text-uppercase mb-4">發布尋物啟事</h2>
+          <div id="type"><h2 class="h5 text-uppercase mb-4">發布尋物啟事</h2></div>
           <div class="row">
             <div class="col-lg-12">
               
@@ -211,8 +223,8 @@ if(!isset($_SESSION["level"])){
               <form action="add_post.php?account_id=<?php echo $account_id?>" method="post" enctype="multipart/form-data"> 
                 <div class="row gy-3">
                 <div class="col-lg-12 form-group">
-                    <label class="form-label text-sm text-uppercase" for="">發布貼文類型:</label>
-                    <select class="selectpicker show-tick form-control" name="post_type" data-customclass="form-control form-control-lg rounded-0" value="貼文類型">
+                    <label class="form-label text-sm text-uppercase" for="">發布貼文類型</label>
+                    <select class="selectpicker show-tick form-control" name="post_type" data-customclass="form-control form-control-lg rounded-0" value="貼文類型" onchange="postType(this.value)">
                       <option disabled selected >貼文類型</option>
                       <option value="尋物啟事">尋物啟事</option>
                       <option value="拾獲貼文">拾獲貼文</option>
@@ -236,7 +248,7 @@ if(!isset($_SESSION["level"])){
                     <input class="form-control form-control-lg" type="file" id="profile_pic" name="item_img" accept=".jpg, .jpeg, .png"><br>
                   </div>
                   <div class="col-lg-12 btn-group-toggle" id="labelName" >
-                  <label class="form-label text-sm text-uppercase" for="">標籤 </label><br>
+                  <label class="form-label text-sm text-uppercase" for="">標籤</label><br>
                   <input type="radio" class="btn-check" name="btnradio" id="衣物" autocomplete="off" value="衣物" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="衣物">衣物</label>&nbsp&nbsp
                   <input type="radio" class="btn-check" name="btnradio" id="配件" autocomplete="off" value="配件" onchange="label(this.value)">
@@ -249,14 +261,14 @@ if(!isset($_SESSION["level"])){
                   <label class="btn btn-outline-info" for="包包">包包</label>&nbsp&nbsp
                   <input type="radio" class="btn-check" name="btnradio" id="隨身物品" autocomplete="off" value="隨身物品" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="隨身物品">隨身物品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="ff" value="文教用品" onchange="label(this.value)">
+                  <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="off" value="文教用品" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="文教用品">文教用品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="ff" value="其他" onchange="label(this.value)">
+                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="off" value="其他" onchange="label(this.value)">
                   <label class="btn btn-outline-info" for="其他">其他</label>&nbsp&nbsp
                 </div>
                 <div class="col-lg-12 form-group" id="other">
-                    <select class="show-tick form-control" id="labelSelect" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
-                    <option disabled selected >請選擇標籤</option> 
+                    <select class="show-tick form-control" id="selectLabel" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
+                    <option disabled>請選擇標籤</option> 
                   </select>
                   </div>
                   <div class="col-lg-12">
