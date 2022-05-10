@@ -251,9 +251,7 @@ $labeltxt=$_GET["label"];
                   <!--  Modal -->
                   
                 <?php
-                // $link=mysqli_connect("localhost","root","12345678","sa");
-	              $link=mysqli_connect("localhost","root");
-                mysqli_select_db($link,"sa");
+                $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
                 $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
                 }
