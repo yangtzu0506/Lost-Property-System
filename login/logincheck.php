@@ -11,6 +11,7 @@ $rs=mysqli_query($link,$sql);
 if ($record=mysqli_fetch_assoc($rs))
     {
         $_SESSION['level']=$record['account_level'];
+        $_SESSION['account']=$record['account_id']; //學號 刊登貼文時需要新增
         $_SESSION['name']=$record['account_name'];
         header('location:../index.php');
     }
