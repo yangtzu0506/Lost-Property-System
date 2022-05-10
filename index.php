@@ -58,8 +58,7 @@ $labeltxt=$_GET["label"];
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">尋物啟示管理</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">貼文審核</a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
+                <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="confirm.php"  aria-haspopup="true" aria-expanded="false">貼文審核</a>
                 </li>
               </ul>
               <ul class="navbar-nav ms-auto">               
@@ -243,15 +242,16 @@ $labeltxt=$_GET["label"];
                 </div>
                 <!-- PRODUCT-->
                   <!--  Modal -->
-                
+                  
                 <?php
-                // $link=mysqli_connect("localhost","root","12345678","sa");
-	              $link=mysqli_connect("localhost","root");
-                mysqli_select_db($link,"sa");
-                
+                $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
+
                 $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
                
+
+        
+
                 }
 	              else if($searchtxt!="")
 	              {
@@ -440,7 +440,7 @@ $labeltxt=$_GET["label"];
                         <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證"; } ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" alt='...'></a>
                         <div class='product-overlay'>
                           <ul class='mb-0 list-inline'>
-                            <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='cart.html'>認領</a></li>
+                            <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='confirm.php'>認領</a></li>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'><i class='fas fa-expand'></i></a></li>
                             <?php  //若權限為1(管理者) 或 權限為0(使用者)且 刊登帳號=登入帳號 且 尚未通過認證 即可編輯
                             if($_SESSION["level"]=='1' || ($_SESSION["level"]=='0' && $_SESSION["account"]==$account_id && $confirm==0)){ ?>

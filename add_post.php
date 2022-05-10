@@ -1,5 +1,5 @@
 <?php
-$link=mysqli_connect("localhost","root","","sa");
+$link=mysqli_connect("localhost","root","12345678","sa");
 $account_id=$_GET["account_id"];
 $post_type = $_POST["post_type"];
 $item_name = $_POST["item_name"];
@@ -8,8 +8,6 @@ $item_time = $_POST["item_time"];
 $item_place = $_POST["item_place"];
 $item_label = $_POST["item_label"];
 $item_confirm = 0;
-
-
 if($post_type=="尋物啟事"){ //尋物開頭為2,拾獲開頭為1
     $max_id="select max(item_id) from item where item_id like '2%' ";
 }else{
