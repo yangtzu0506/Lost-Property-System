@@ -46,7 +46,7 @@ $labeltxt=$_GET["label"];
               </ul>
               <ul class="navbar-nav ms-auto">               
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="user.php">個人化</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
                 </li>
               </ul>
 
@@ -114,7 +114,7 @@ $labeltxt=$_GET["label"];
                 <h5 class="text-uppercase mb-4">類別</h5>
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">衣物</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2" class="nav-item dropdown"><a class="reset-anchor" href="#!">外套</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=外套">外套</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=上衣">上衣</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=褲子">褲子</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=襪子">襪子</a></li>
@@ -250,13 +250,13 @@ $labeltxt=$_GET["label"];
                 mysqli_select_db($link,"sa");
                 
                 if(isset($labeltxt)){
-                $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
-                $sql="select account_id from account";
+                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
+               
                 }
 	              else if($searchtxt!="")
 	              {
                 
-                $sql="select * from item where item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%'";
+                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%'";
         
 		            }
 	              else
@@ -321,9 +321,7 @@ $labeltxt=$_GET["label"];
       <!-- 編輯資料彈窗 -->
       <script type="text/javascript">
             function label(e){
-              
-              var label=e;
-            
+            var label=e;
             var sectors=new Array();
             sectors[0]=['請選擇標籤'];
             sectors[1]=['外套','上衣','褲子','襪子','鞋子'];
@@ -380,7 +378,7 @@ $labeltxt=$_GET["label"];
                           }
             var sectorSelect=document.getElementById("labelSelect");
             sectorSelect.innerHTML=Sinner;
-        
+            
               }
             }
                   </script>
