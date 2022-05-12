@@ -231,15 +231,15 @@ if(!isset($_SESSION["level"])){
 
                   <div class="col-lg-6">
                     <label class="form-label text-sm text-uppercase" for="name">物品名稱</label>
-                    <input class="form-control form-control-lg" type="text" id="name" name="item_name" placeholder="請輸入物品名稱">
+                    <input class="form-control form-control-lg" type="text" id="name" name="item_name" placeholder="請輸入物品名稱" required>
                   </div>
                   <div class="col-lg-6">
                     <label class="form-label text-sm text-uppercase" for="place">遺失地點</label>
-                    <input class="form-control form-control-lg" type="text" id="place" name="item_place" placeholder="請輸入遺失地點">
+                    <input class="form-control form-control-lg" type="text" id="place" name="item_place" placeholder="請輸入遺失地點" required>
                   </div>
                   <div class="col-lg-6">
                     <label class="form-label text-sm text-uppercase" for="time">遺失時間 </label>
-                    <input class="form-control form-control-lg" type="datetime-local" id="time" name="item_time" placeholder="請輸入遺失時間">
+                    <input class="form-control form-control-lg" type="datetime-local" id="time" name="item_time" placeholder="請輸入遺失時間" required>
                   </div>
                   <div class="col-lg-6">
                     <label class="form-label text-sm text-uppercase" for="phone">請上傳圖片 </label>
@@ -265,13 +265,13 @@ if(!isset($_SESSION["level"])){
                   <label class="btn btn-outline-info" for="其他">其他</label>&nbsp&nbsp
                 </div>
                 <div class="col-lg-12 form-group" id="other">
-                    <select class="show-tick form-control" id="selectLabel" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
-                    <option disabled>請選擇標籤</option> 
+                    <select class="show-tick form-control" id="selectLabel" name="item_label" data-customclass="form-control form-control-lg rounded-0" required>
+                    <option disabled >請選擇標籤</option> 
                   </select>
                   </div>
                   <div class="col-lg-12">
                     <label class="form-label text-sm text-uppercase" for="describe">物品敘述</label>
-                    <textarea class="form-control form-control-lg" type="text" id="describe" name="item_describe" placeholder="請輸入物品敘述"></textarea>
+                    <textarea class="form-control form-control-lg" type="text" id="describe" name="item_text" placeholder="請輸入物品敘述" value=" "></textarea>
                     
                   </div>
          

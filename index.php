@@ -420,11 +420,7 @@ $labeltxt=$_GET["label"];
                     <option disabled>請選擇標籤</option> 
                   </select> 
                   </div>
-                  <div class="col-lg-12">
-                    <label class="form-label text-sm text-uppercase" for="describe">物品敘述</label>
-                    <textarea class="form-control form-control-lg" type="text" id="describe" name="item_describe" placeholder="請輸入物品敘述"><?php echo $text?></textarea>
-                    
-                  </div>
+                  
                     </div>
                    
                   <input type="submit" class="btn btn-info" value="儲存">
