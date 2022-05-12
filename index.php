@@ -51,14 +51,14 @@ $labeltxt=$_GET["label"];
               </ul>
 
               <!-- 管理者權限 索引列-->
-                <?php }else if($_SESSION["level"]=='1'){ ?>
+              <?php }else if($_SESSION["level"]=='1'){ ?>
                   <li class="nav-item">
-                  <!-- Link--><a class="nav-link active" href="index.php">拾獲物管理</a>
+                  <!-- Link--><a class="nav-link" href="index.php">拾獲物管理</a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">尋物啟示管理</a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
+                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟示管理</a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="confirm.php"  aria-haspopup="true" aria-expanded="false">貼文審核</a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理區</a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="confirm.php">貼文審核</a><a class="dropdown-item border-0 transition-link" href="post.php">代發貼文</a><a class="dropdown-item border-0 transition-link" href="end_case.php">下架區</a></div>
                 </li>
               </ul>
               <ul class="navbar-nav ms-auto">               
@@ -71,9 +71,7 @@ $labeltxt=$_GET["label"];
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link active" href="index.php">拾獲貼文</a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">尋物啟示清單</a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
                 <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="post.php"  aria-haspopup="true" aria-expanded="false">發布貼文</a>
                 </li>
               </ul>
@@ -285,8 +283,8 @@ $labeltxt=$_GET["label"];
                       $img=$record[6];
                       $confirm = $record[7];
                       $account_id = $record[8];
-
                       ?>
+                      <?php if($confirm!=2){ ?>
 
       <!-- 詳細資料彈窗 -->
       <div class="modal fade" id="<?php echo $name?>" tabindex="-1">
@@ -440,7 +438,7 @@ $labeltxt=$_GET["label"];
                         <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證"; } ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" alt='...'></a>
                         <div class='product-overlay'>
                           <ul class='mb-0 list-inline'>
-                            <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='confirm.php'>認領</a></li>
+                            <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='end_case/end_case_end.php?id=<?php echo $id ?>'>結案</a></li>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'><i class='fas fa-expand'></i></a></li>
                             <?php  //若權限為1(管理者) 或 權限為0(使用者)且 刊登帳號=登入帳號 且 尚未通過認證 即可編輯
                             if($_SESSION["level"]=='1' || ($_SESSION["level"]=='0' && $_SESSION["account"]==$account_id && $confirm==0)){ ?>
@@ -453,7 +451,7 @@ $labeltxt=$_GET["label"];
                     </div>
                   </div>
                   <?php
-                    }
+                      }}
                   ?>
                 </div>
                 <!-- PAGINATION-->

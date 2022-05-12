@@ -117,13 +117,13 @@ $labeltxt=$_GET["label"];
           <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
               <div class="col-lg-6">
-                <h1 class="h2 text-uppercase mb-0">未審核貼文區</h1>
+                <h1 class="h2 text-uppercase mb-0">下架區</h1>
               </div>
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
                     <li class="breadcrumb-item"><a class="text-dark" href="index.html">首頁</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">未審核貼文區</li>
+                    <li class="breadcrumb-item active" aria-current="page">下架區</li>
                   </ol>
                 </nav>
               </div>
@@ -131,7 +131,7 @@ $labeltxt=$_GET["label"];
           </div>
         </section>
         <section class="py-5">
-          <h2 class="h5 text-uppercase mb-4">待審核貼文</h2>
+          <h2 class="h5 text-uppercase mb-4">下架貼文</h2>
           <div class="row">
             <div class="col-lg-12 mb-5 mb-lg-0">
               <!-- CART TABLE-->
@@ -143,7 +143,7 @@ $labeltxt=$_GET["label"];
                       <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">物品名稱</strong></th>
                       <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">遺失時間</strong></th>
                       <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">遺失地點</strong></th>
-                      <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase"> 審核 </strong></th>
+                      <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase"> 編輯 </strong></th>
                     </tr>
                   </thead>
                   <tbody class="border-0">
@@ -184,7 +184,7 @@ $labeltxt=$_GET["label"];
                       $img=$record[6];
                       $confirm = $record[7];
                       ?>
-                      <?php if($confirm==0){ ?>
+                      <?php if($confirm==2){ ?>
 
              <!-- 詳細資料彈窗 -->
         <div class="modal fade" id="<?php echo $name?>" tabindex="-1">
@@ -206,7 +206,7 @@ $labeltxt=$_GET["label"];
                       <p class="text-mb mb-4">標籤：<?php echo $label?></p>
                       </div>
                     </div>
-                    <div id="button"><center><a class="btn btn-sm btn-outline-dark" href="confirm/confirm_update.php?id=<?php echo $id ?>">認證</a><a class="btn btn-sm btn-outline-dark" href="confirm/confirm_delete.php?id=<?php echo $id ?>">刪除</a><center></div>
+                    <div id="button"><center><a class="btn btn-sm btn-outline-dark" href="end_case/end_case_update.php?id=<?php echo $id ?>">復原</a><a class="btn btn-sm btn-outline-dark" href="end_case/end_case_delete.php?id=<?php echo $id ?>">刪除</a><center></div>
                   </div>
                 </div>
               </div>
@@ -232,7 +232,7 @@ $labeltxt=$_GET["label"];
                       </td>
                       <td class="p-3 align-middle border-light">
                       <ul class='mb-0 list-inline'>
-                        <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'>審核</a></li>
+                        <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'>編輯</a></li>
                       </ul>
                       </td>
                     </tr>
