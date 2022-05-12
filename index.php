@@ -241,10 +241,71 @@ $labeltxt=$_GET["label"];
                   </div>
                 </div>
                 <!-- PRODUCT-->
+                <!-- 編輯資料彈窗 -->
+      <script type="text/javascript">
+            function label(e){
+            var label=e;
+            var sectors=new Array();
+            sectors[0]=['請選擇標籤'];
+            sectors[1]=['外套','上衣','褲子','襪子','鞋子'];
+            sectors[2]=['帽子','眼鏡','手錶','項鍊','戒指','耳環','眼鏡'];
+            sectors[3]=['學生證','身分證','駕照'];
+            sectors[4]=['手機','耳機','電腦','平板','滑鼠','音響','相機'];
+            sectors[5]=['肩包','腰包','手提包'];
+            sectors[6]=['錢包','雨傘','香水','打火機'];
+            sectors[7]=['鉛筆盒','文具'];
+            var index;
+            switch(label){
+              case "衣物":
+              index=1;
+              break;
+              case "配件":
+              index=2;
+              break;
+              case "證件":
+              index=3;
+              break;
+              case "3C產品":
+              index=4;
+              break;
+              case "包包":
+              index=5;
+              break;
+              case "隨身物品":
+              index=6;
+              break;
+              case "文教用品":
+              index=7;
+              break;
+              case "其他":
+              index=8;
+              break;
+            }
+           //換標籤內的選項
+           var Sinner="";
+            if(index==8){
+            var otherselect=document.getElementById("other");
+            Sinner=Sinner+"<input type='text' class='form-control form-control' name='item_label' placeholder='請輸入標籤類別'>";
+            otherselect.innerHTML=Sinner;
+            index=0;
+            
+            }else{
+              var otherselect=document.getElementById("other");
+              Sinner="<select class='show-tick form-control' id='selectLabel' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
+              otherselect.innerHTML=Sinner;
+              var Sinner="";
+
+              for(var i=0;i<sectors[index].length;i++){
+                Sinner=Sinner+'<option value='+sectors[index][i]+'>'+sectors[index][i]+'</option>';
+                          }
+            var sectorSelect=document.getElementById("selectLabel");
+            sectorSelect.innerHTML=Sinner;
+              }
+            }
+             </script>
                   <!--  Modal -->
-                  
                 <?php
-                $link=mysqli_connect("localhost","root","12345678","sa");
+                $link=mysqli_connect("localhost","root","","sa");
                 if(isset($labeltxt)){
 
                 $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
@@ -318,69 +379,7 @@ $labeltxt=$_GET["label"];
           </div>
         </div>
       </div>
-      <!-- 編輯資料彈窗 -->
-      <script type="text/javascript">
-            function label(e){
-            var label=e;
-            var sectors=new Array();
-            sectors[0]=['請選擇標籤'];
-            sectors[1]=['外套','上衣','褲子','襪子','鞋子'];
-            sectors[2]=['帽子','眼鏡','手錶','項鍊','戒指','耳環','眼鏡'];
-            sectors[3]=['學生證','身分證','駕照'];
-            sectors[4]=['手機','耳機','電腦','平板','滑鼠','音響','相機'];
-            sectors[5]=['肩包','腰包','手提包'];
-            sectors[6]=['錢包','雨傘','香水','打火機'];
-            sectors[7]=['鉛筆盒','文具'];
-            var index;
-            switch(label){
-              case "衣物":
-              index=1;
-              break;
-              case "配件":
-              index=2;
-              break;
-              case "證件":
-              index=3;
-              break;
-              case "3C產品":
-              index=4;
-              break;
-              case "包包":
-              index=5;
-              break;
-              case "隨身物品":
-              index=6;
-              break;
-              case "文教用品":
-              index=7;
-              break;
-              case "其他":
-              index=8;
-              break;
-            }
-           //換標籤內的選項
-           var Sinner="";
-            if(index==8){
-            var otherselect=document.getElementById("other");
-            Sinner=Sinner+"<input type='text' class='form-control form-control' name='item_label' placeholder='請輸入標籤類別'>";
-            otherselect.innerHTML=Sinner;
-            index=0;
-            alert(Sinner);
-            }else{
-              var otherselect=document.getElementById("other");
-              Sinner="<select class='show-tick form-control' id='labelSelect' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
-              otherselect.innerHTML=Sinner;
-              var Sinner="";
-
-              for(var i=0;i<sectors[index].length;i++){
-                Sinner=Sinner+'<option value='+sectors[index][i]+'>'+sectors[index][i]+'</option>';
-                          }
-            var sectorSelect=document.getElementById("labelSelect");
-            sectorSelect.innerHTML=Sinner;
-            alert(Sinner);
-              }
-            }
-             </script>
+      
       <div class="modal fade" id="<?php echo $name?>edit" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content overflow-hidden border-0">
@@ -396,7 +395,7 @@ $labeltxt=$_GET["label"];
                     <label class="text-muted">遺失時間</label><input class="form-control" type="datetime-local" name="item_time" value=<?php echo $time?>>
                     <div class="row align-items-stretch mb-4 gx-0"> 
                     <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?>>
-                    
+          
                   <div class="col-lg-12 btn-group-toggle" id="labelName" >
                   <label class="form-label text-sm text-uppercase" for="">標籤</label><br>
                   <input type="radio" class="btn-check" name="btnradio" id="衣物" autocomplete="off" value="衣物" onchange="label(this.value)">
@@ -418,12 +417,18 @@ $labeltxt=$_GET["label"];
                 </div>
                 
                 <div class="col-lg-12 form-group" id="other">
-                    <select class="show-tick form-control" id="labelSelect" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
+
+                    <select class="show-tick form-control" id="selectLabel" name="item_label" data-customclass="form-control form-control-lg rounded-0">
                     <option disabled>請選擇標籤</option> 
                   </select> 
-                  
+                  </div>
+                  <div class="col-lg-12">
+                    <label class="form-label text-sm text-uppercase" for="describe">物品敘述</label>
+                    <textarea class="form-control form-control-lg" type="text" id="describe" name="item_describe" placeholder="請輸入物品敘述"><?php echo $text?></textarea>
+                    
                   </div>
                     </div>
+                   
                   <input type="submit" class="btn btn-info" value="儲存">
                     </form>
                     </div>
@@ -437,7 +442,7 @@ $labeltxt=$_GET["label"];
                     <div class='col-lg-4 col-sm-6'>
                     <div class='product text-center'>
                       <div class='mb-3 position-relative'>
-                        <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證"; } ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" alt='...'></a>
+                        <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證";} ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" alt='...'></a>
                         <div class='product-overlay'>
                           <ul class='mb-0 list-inline'>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='confirm.php'>認領</a></li>
