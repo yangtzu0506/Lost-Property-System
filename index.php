@@ -303,7 +303,7 @@ $labeltxt=$_GET["label"];
              </script>
                   <!--  Modal -->
                 <?php
-                $link=mysqli_connect("localhost","root","","sa");
+                $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
 
                 $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
