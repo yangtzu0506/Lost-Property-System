@@ -71,7 +71,7 @@ $labeltxt=$_GET["label"];
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link active" href="index.php">拾獲貼文</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
+                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟事清單</a></li>
                 <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="post.php"  aria-haspopup="true" aria-expanded="false">發布貼文</a>
                 </li>
               </ul>
@@ -303,7 +303,7 @@ $labeltxt=$_GET["label"];
              </script>
                   <!--  Modal -->
                 <?php
-                $link=mysqli_connect("localhost","root","","sa");
+                $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
 
                 $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";

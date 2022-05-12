@@ -55,7 +55,7 @@ $labeltxt=$_GET["label"];
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link" href="index.php">拾獲物管理</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟示管理</a>
+                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟事管理</a>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理區</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="confirm.php">貼文審核</a><a class="dropdown-item border-0 transition-link" href="post.php">代發貼文</a><a class="dropdown-item border-0 transition-link" href="end_case.php">下架區</a></div>
