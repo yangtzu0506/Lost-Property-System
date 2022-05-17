@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php session_start();
+include "connect.php";
 $searchtxt=$_GET["search"];
 $labeltxt=$_GET["label"];
 ?>
@@ -53,11 +54,11 @@ $labeltxt=$_GET["label"];
               <!-- 管理者權限 索引列-->
               <?php }else if($_SESSION["level"]=='1'){ ?>
                   <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="index.php">拾獲物管理</a>
+                  <!-- Link--><a class="nav-link active" href="index.php">拾獲物管理</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟示管理</a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理區</a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理區</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="confirm.php">貼文審核</a><a class="dropdown-item border-0 transition-link" href="post.php">代發貼文</a><a class="dropdown-item border-0 transition-link" href="end_case.php">下架區</a></div>
                 </li>
               </ul>
@@ -90,7 +91,7 @@ $labeltxt=$_GET["label"];
           <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
               <div class="col-lg-6">
-                <h1 class="h2 text-uppercase mb-0">遺失物清單</h1>
+                <h1 class="h2 text-uppercase mb-0">拾獲物清單</h1>
               </div>
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
@@ -240,7 +241,7 @@ $labeltxt=$_GET["label"];
                 </div>
                 <!-- PRODUCT-->
                 <!-- 編輯資料彈窗 -->
-      <script type="text/javascript">
+      <!-- <script type="text/javascript">
             function label(e){
             var label=e;
             var sectors=new Array();
@@ -289,21 +290,20 @@ $labeltxt=$_GET["label"];
             
             }else{
               var otherselect=document.getElementById("other");
-              Sinner="<select class='show-tick form-control' id='selectLabel' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
+              Sinner="<select class='show-tick form-control' id='test1' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
               otherselect.innerHTML=Sinner;
-              var Sinner="";
+              // var Sinner="";
 
               for(var i=0;i<sectors[index].length;i++){
                 Sinner=Sinner+'<option value='+sectors[index][i]+'>'+sectors[index][i]+'</option>';
                           }
-            var sectorSelect=document.getElementById("selectLabel");
+            var sectorSelect=document.getElementById("test1");
             sectorSelect.innerHTML=Sinner;
               }
             }
-             </script>
+             </script> -->
                   <!--  Modal -->
                 <?php
-                $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
 
                 $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
@@ -384,7 +384,8 @@ $labeltxt=$_GET["label"];
             <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body p-0">
               <div class="row align-items-stretch">
-                <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style="background: url(<?php echo $img?>)" href="<?php echo $img?>" data-gallery="gallery1" data-glightbox="<?php echo $name?>"></a></div>
+                <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style="background: url(<?php echo $img?>)" href="<?php echo $img?>" data-gallery="gallery1" data-glightbox="<?php echo $name?>"></a>
+              </div>
                 <div class="col-lg-6">
                   <div class="p-4 my-md-4">
                     <form method="post" action="edit_post.php?item_id=<?php echo $id?>">
@@ -394,35 +395,9 @@ $labeltxt=$_GET["label"];
                     <div class="row align-items-stretch mb-4 gx-0"> 
                     <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?>>
           
-                  <div class="col-lg-12 btn-group-toggle" id="labelName" >
-                  <label class="form-label text-sm text-uppercase" for="">標籤</label><br>
-                  <input type="radio" class="btn-check" name="btnradio" id="衣物" autocomplete="off" value="衣物" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="衣物">衣物</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="配件" autocomplete="off" value="配件" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="配件">配件</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="證件" autocomplete="off" value="證件" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="證件">證件</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="3C產品" autocomplete="off" value="3C產品" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="3C產品">3C產品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="包包" autocomplete="off" value="包包" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="包包">包包</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="隨身物品" autocomplete="off" value="隨身物品" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="隨身物品">隨身物品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="off" value="文教用品" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="文教用品">文教用品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="off" value="其他" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="其他">其他</label>&nbsp&nbsp
-                </div>
-                
-                <div class="col-lg-12 form-group" id="other">
 
-                    <select class="show-tick form-control" id="selectLabel" name="item_label" data-customclass="form-control form-control-lg rounded-0">
-                    <option disabled>請選擇標籤</option> 
-                  </select> 
+                    <label class="text-muted">標籤</label><input type="text" class="show-tick form-control" name="item_label" data-customclass="form-control form-control-lg rounded-0" value="<?php echo $label?>">
                   </div>
-                  
-                    </div>
-                   
                   <input type="submit" class="btn btn-info" value="儲存">
                     </form>
                     </div>

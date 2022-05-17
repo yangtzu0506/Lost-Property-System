@@ -1,6 +1,10 @@
 <?php
 session_start();
-$link=mysqli_connect("localhost","root","12345678","sa");
+
+include "connect.php";
+
+
+
 $account_id=$_GET["account_id"];
 $post_type = $_POST["post_type"];
 $item_name = $_POST["item_name"];

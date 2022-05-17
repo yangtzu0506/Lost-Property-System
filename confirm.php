@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php session_start();
+include "connect.php";
 $searchtxt=$_GET["search"];
 $labeltxt=$_GET["label"];
 ?>
@@ -148,7 +149,7 @@ $labeltxt=$_GET["label"];
                   </thead>
                   <tbody class="border-0">
                   <?php
-                $link=mysqli_connect("localhost","root","12345678","sa");
+                // $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
                 $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
                 }

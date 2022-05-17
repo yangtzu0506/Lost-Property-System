@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <?php session_start();
+include "connect.php";
 $searchtxt=$_GET["search"];
 $labeltxt=$_GET["label"];
+$account=$_SESSION["account"];
 ?>
 <html>
   <head>
@@ -40,13 +42,13 @@ $labeltxt=$_GET["label"];
               <ul class="navbar-nav me-auto">
                 <!-- 使用者權限 索引列-->
                <?php if($_SESSION["level"]=='0'){ ?>                       
-                <li class="nav-item"><a class="nav-link active" href="index.php">拾獲貼文</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php">拾獲貼文</a></li>
                 <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
                 <li class="nav-item"><a class="nav-link"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link active" href="#">個人化</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
                 </li>
               </ul>
 
@@ -95,7 +97,7 @@ $labeltxt=$_GET["label"];
               <div class="col-lg-6">
                 <h1 class="h2 text-uppercase mb-0">使用者</h1>
               </div>
-              <div class="col-lg-6 text-lg-end">
+              <div class="col-lg-4 text-lg-end">
                 <nav aria-label="breadcrumb">
                   <!-- <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
                     <li class="breadcrumb-item"><a class="text-dark" href="index.html">遺失物系統</a></li>
@@ -109,133 +111,51 @@ $labeltxt=$_GET["label"];
         <section class="py-5">
           <div class="container p-0">
             <div class="row">
-              <!-- SHOP SIDEBAR-->
-              <div class="col-lg-3 order-2 order-lg-1">
-                <h5 class="text-uppercase mb-4">類別</h5>
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">使用者名稱</strong></div>
+              <!-- 用戶資料 -->
+              <?php 
+              $user_sql="select * from account where account_id='$account'";
+              $user=mysqli_query($link,$user_sql);
+              if($record=mysqli_fetch_assoc($user))
+              {
+                $name=$record["account_name"];
+                $cellphone=$record["account_cellphone"];
+                $password=$record["account_password"];
+                // $email=$record["account_email"];
+
+              }
+              ?>
+              <div class="col-lg-4 order-2 order-lg-1">
+              <ul class='mb-0 list-inline'>
+                <li class='list-inline-item m-0 p-0'><h2 class="list-inline-item text-uppercase mb-6" style="vertical-align:middle">個人資料</h2></li><li class='list-inline-item m-1 p-1'><a class='btn btn-sm btn-outline' style="width:50px;margin-left:200px;vertical-align:middle" href='#<?php echo $name?>edit' data-bs-toggle='modal' ><img src="img/edit.png" width='30px'></a></li>
+              </ul>
+                <div class="py-3 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold" style="font-size:20px">帳號</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                 
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=鞋子">12345</a></li>
+                  <li class="mb-2" style="font-size:20px"><?php echo $account?></li>
                 </ul>
 
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">配件</strong></div>
+                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold" style="font-size:20px">密碼</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=帽子">帽子</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=眼鏡">眼鏡</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=手錶">手錶</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=項鍊">項鍊</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=戒指">戒指</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳環">耳環</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=眼鏡">眼鏡</a></li>
+                  <li class="mb-2" style="font-size:20px"><?php echo $password?></li>
                 </ul>
 
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">證件</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=學生證">學生證</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=身份證">身份證</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=駕照">駕照</a></li>
+                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold" style="font-size:20px">名稱</strong></div>
+                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
+                  <li class="mb-2" style="font-size:20px"><?php echo $name?></li>
                 </ul>
 
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">3C產品</strong></div>
+                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold" style="font-size:20px">聯絡電話</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=手機">手機</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳機">耳機</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=電腦">電腦</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=平板">平板</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=滑鼠">滑鼠</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=音響">音響</a></li>
+                  <li class="mb-2" style="font-size:20px"><?php echo $cellphone?></li>
                 </ul>
-
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">包包</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=肩包">肩包</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=腰包">腰包</a></li>
-                </ul>
-                
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">隨身物品</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=錢包">錢包</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=雨傘">雨傘</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=打火機">打火機</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=香水">香水</a></li>
-
-                </ul>
-                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">文教用品</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=鉛筆盒">鉛筆盒</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=文具">文具</a></li>
-                </ul>
-                
-                <h6 class="text-uppercase mb-4">Price range</h6>
-                <div class="price-range pt-4 mb-5">
-                  <div id="range"></div>
-                  <div class="row pt-2">
-                    <div class="col-6"><strong class="small fw-bold text-uppercase">From</strong></div>
-                    <div class="col-6 text-end"><strong class="small fw-bold text-uppercase">To</strong></div>
-                  </div>
-                </div>
-                <h6 class="text-uppercase mb-3">Show only</h6>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_1">
-                  <label class="form-check-label" for="checkbox_1">Returns Accepted</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_2">
-                  <label class="form-check-label" for="checkbox_2">Returns Accepted</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_3">
-                  <label class="form-check-label" for="checkbox_3">Completed Items</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_4">
-                  <label class="form-check-label" for="checkbox_4">Sold Items</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_5">
-                  <label class="form-check-label" for="checkbox_5">Deals &amp; Savings</label>
-                </div>
-                <div class="form-check mb-4">
-                  <input class="form-check-input" type="checkbox" id="checkbox_6">
-                  <label class="form-check-label" for="checkbox_6">Authorized Seller</label>
-                </div>
-                <h6 class="text-uppercase mb-3">Buying format</h6>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_1">
-                  <label class="form-check-label" for="radio_1">All Listings</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_2">
-                  <label class="form-check-label" for="radio_2">Best Offer</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_3">
-                  <label class="form-check-label" for="radio_3">Auction</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_4">
-                  <label class="form-check-label" for="radio_4">Buy It Now</label>
-                </div>
               </div>
               
-              <!-- SHOP LISTING-->
-              <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+              <!-- 個人刊登-->
+              <div class="col-lg-8 order-1 order-lg-2 mb-5 mb-lg-0">
+             
                 <div class="row mb-3 align-items-center">
                   <div class="col-lg-6 mb-2 mb-lg-0">
+                  <h2 class="text-uppercase mb-6">個人刊登</h2>
                     <!--<p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>-->
-                  </div>
-                  <div class="col-lg-6">
-                    <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
-                      <li class="list-inline-item">
-                          <form action="index.php" method=get>
-                          <div class="input-group">
-
-                          <input class="form-control form-control-lg" aria-describedby="button-addon2" type=text name="search" value="<?php echo $searchtxt?>">
-                          <button class="btn btn-dark" id="button-addon2" type="submit" value="搜尋">搜尋</button>
-                          </div>
-                          </form>
-                      </li>
-                    </ul>
                   </div>
                 </div>
                 <!-- PRODUCT-->
@@ -243,23 +163,23 @@ $labeltxt=$_GET["label"];
                 
                 <?php
                 // $link=mysqli_connect("localhost","root","12345678","sa");
-	              $link=mysqli_connect("localhost","root");
+
                 mysqli_select_db($link,"sa");
                 
                 if(isset($labeltxt)){
-                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
+                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%' and account_id='$account'";
                
                 }
 	              else if($searchtxt!="")
 	              {
                 
-                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%'";
+                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%' and account_id='$account'";
         
 		            }
 	              else
 	              {
               
-                $sql="select * from item where item_id like '1%'";
+                $sql="select * from item where item_id like '1%' and account_id='$account'";
 		            }
                 $all="select * from item";
                 $all_rs=mysqli_query($link,$all);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php session_start();
+include "connect.php";
 $searchtxt=$_GET["search"];
 $labeltxt=$_GET["label"];
 ?>
@@ -148,7 +149,7 @@ $labeltxt=$_GET["label"];
                   </thead>
                   <tbody class="border-0">
                   <?php
-                $link=mysqli_connect("localhost","root","12345678","sa");
+                // $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
                 $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
                 }
@@ -201,7 +202,7 @@ $labeltxt=$_GET["label"];
                     <p class="text-muted"><?php echo $text?></p>
                     <p class="text-mb mb-4">遺失時間：<?php echo $time?></p>
                     <div class="row align-items-stretch mb-4 gx-0">
-                      <div class="col-sm-7">
+                    <div class="col-sm-7">
                       <p class="text-mb mb-4">遺失地點：<?php echo $place?></p>
                       <p class="text-mb mb-4">標籤：<?php echo $label?></p>
                       </div>
@@ -219,11 +220,11 @@ $labeltxt=$_GET["label"];
                       <td class="p-3 align-middle border-light">
                         <p class="mb-0 small"><?php echo $id?></p>
                       </td>
-                      <th class="ps-0 py-3 border-light" scope="row">
+                      <td class="ps-0 py-3 border-light" scope="row">
                         <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" href="detail.html"><img src="<?php echo $img?>" alt="..." width="70"/></a>
                           <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" href="detail.html"><?php echo $name?></a></strong></div>
                         </div>
-                      </th>
+                      </td>
                       <td class="p-3 align-middle border-light">
                         <p class="mb-0 small"><?php echo $time?></p>
                       </td>
