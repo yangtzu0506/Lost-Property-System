@@ -135,11 +135,11 @@ $account=$_SESSION["account"];
                           <h1 class="h2 text-uppercase mb-0">編輯資料</h1>
                             <form method="post" action="edit_user.php?account_id=<?php echo $account?>">
                             <label class="h4 text-muted">帳號</label><input class="form-control form-control-lg" type="text" name="account_id" value=<?php echo $account?> readonly><br>
-                            <label class="h5 text-muted">密碼</label><input class="form-control form-control-lg" type="text" name="account_password" value=<?php echo $password?>><br>
-                            <label class="h5 text-muted">名稱</label><input class="form-control form-control-lg" type="text" name="account_name" value=<?php echo $name?>><br>
+                            <label class="h5 text-muted">密碼</label><input class="form-control form-control-lg" type="text" name="account_password" value=<?php echo $password?> required><br>
+                            <label class="h5 text-muted">名稱</label><input class="form-control form-control-lg" type="text" name="account_name" value=<?php echo $name?> required><br>
                            
-                            <label class="h5 text-muted">聯絡電話</label><input class="form-control form-control-lg" type="text" name="account_cellphone" value=<?php echo $cellphone?>><br>
-                            <label class="h5 text-muted">電子郵件</label><input class="form-control form-control-lg" type="text" name="account_email" value=<?php echo $email?>><br>
+                            <label class="h5 text-muted">聯絡電話</label><input class="form-control form-control-lg" type="text" name="account_cellphone" value=<?php echo $cellphone?> required><br>
+                            <label class="h5 text-muted">電子郵件</label><input class="form-control form-control-lg" type="text" name="account_email" value=<?php echo $email?> required><br>
 
                           <input type="submit" class="btn btn-info" value="儲存">
                             </form>
@@ -261,72 +261,7 @@ $account=$_SESSION["account"];
           </div>
         </div>
       </div>
-      <!-- 編輯資料彈窗 -->
-      <script type="text/javascript">
-            function label(e){
-              
-              var label=e;
-            
-            var sectors=new Array();
-            sectors[0]=['請選擇標籤'];
-            sectors[1]=['外套','上衣','褲子','襪子','鞋子'];
-            sectors[2]=['帽子','眼鏡','手錶','項鍊','戒指','耳環','眼鏡'];
-            sectors[3]=['學生證','身分證','駕照'];
-            sectors[4]=['手機','耳機','電腦','平板','滑鼠','音響','相機'];
-            sectors[5]=['肩包','腰包','手提包'];
-            sectors[6]=['錢包','雨傘','香水','打火機'];
-            sectors[7]=['鉛筆盒','文具'];
-            var index;
-            switch(label){
-              case "衣物":
-              index=1;
-              break;
-              case "配件":
-              index=2;
-              break;
-              case "證件":
-              index=3;
-              break;
-              case "3C產品":
-              index=4;
-              break;
-              case "包包":
-              index=5;
-              break;
-              case "隨身物品":
-              index=6;
-              break;
-              case "文教用品":
-              index=7;
-              break;
-              case "其他":
-              index=8;
-              break;
-            }
-    
-           //換標籤內的選項
-           var Sinner="";
-            if(index==8){
-            var otherselect=document.getElementById("other");
-            Sinner=Sinner+"<input type='text' class='form-control form-control' name='item_label' placeholder='請輸入標籤類別'>";
-            otherselect.innerHTML=Sinner;
-            index=0;
-            
-            }else{
-              var otherselect=document.getElementById("other");
-              Sinner="<select class='show-tick form-control' id='labelSelect' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
-              otherselect.innerHTML=Sinner;
-              var Sinner="";
-
-              for(var i=0;i<sectors[index].length;i++){
-                Sinner=Sinner+'<option value='+sectors[index][i]+'>'+sectors[index][i]+'</option>';
-                          }
-            var sectorSelect=document.getElementById("labelSelect");
-            sectorSelect.innerHTML=Sinner;
-        
-              }
-            }
-                  </script>
+     
       <div class="modal fade" id="<?php echo $name?>edit" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content overflow-hidden border-0">
@@ -336,38 +271,14 @@ $account=$_SESSION["account"];
                 <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style="background: url(<?php echo $img?>)" href="<?php echo $img?>" data-gallery="gallery1" data-glightbox="<?php echo $name?>"></a></div>
                 <div class="col-lg-6">
                   <div class="p-4 my-md-4">
-                    <form method="post" action="edit_post.php?item_id=<?php echo $id?>">
-                    <label class="h4">名稱</label><input class="form-control" type="text" name="item_name" value=<?php echo $name?>>
-                    <label class="text-muted">敘述</label><input class="form-control form-control-lg" type="text" name="item_text" value=<?php echo $text?>>
-                    <label class="text-muted">遺失時間</label><input class="form-control" type="datetime-local" name="item_time" value=<?php echo $time?>>
+                  <form method="post" action="edit_post.php?item_id=<?php echo $id?>">
+                    <label class="h4">名稱</label><input class="form-control" type="text" name="item_name" value=<?php echo $name?> required>
+                    <label class="text-muted">敘述</label><input class="form-control form-control-lg" type="text" name="item_text" value=<?php echo $text?> required>
+                    <label class="text-muted">遺失時間</label><input class="form-control" type="datetime-local" name="item_time" value=<?php echo $time?> required>
                     <div class="row align-items-stretch mb-4 gx-0"> 
-                    <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?>>
-                    <div class="col-lg-12 btn-group-toggle" id="labelName" >
-                  <label class="form-label text-muted" for="">標籤 </label><br>
-                  <input type="radio" class="btn-check" name="btnradio" id="衣物" autocomplete="off" value="衣物" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="衣物">衣物</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="配件" autocomplete="off" value="配件" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="配件">配件</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="證件" autocomplete="off" value="證件" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="證件">證件</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="3C產品" autocomplete="off" value="3C產品" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="3C產品">3C產品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="包包" autocomplete="off" value="包包" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="包包">包包</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="隨身物品" autocomplete="off" value="隨身物品" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="隨身物品">隨身物品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="文教用品" autocomplete="ff" value="文教用品" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="文教用品">文教用品</label>&nbsp&nbsp
-                  <input type="radio" class="btn-check" name="btnradio" id="其他" autocomplete="ff" value="其他" onchange="label(this.value)">
-                  <label class="btn btn-outline-info" for="其他">其他</label>&nbsp&nbsp
-                </div>
-                
-                <div class="col-lg-12 form-group" id="other">
-                    <select class="show-tick form-control" id="labelSelect" name="item_label" data-customclass="form-control form-control-lg rounded-0" >
-                    <option disabled selected >請選擇標籤</option> 
-                  </select>
+                    <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?> required>
+                    <label class="text-muted">標籤</label><input type="text" class="show-tick form-control" name="item_label" data-customclass="form-control form-control-lg rounded-0" value="<?php echo $label?>" required>
                   </div>
-                    </div>
                   <input type="submit" class="btn btn-info" value="儲存">
                     </form>
                   </div>

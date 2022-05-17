@@ -130,14 +130,14 @@ $labeltxt=$_GET["label"];
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">證件</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
+                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=學生證">學生證</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=身份證">身份證</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=駕照">駕照</a></li>
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">3C產品</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
+                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=手機">手機</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳機">耳機</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=電腦">電腦</a></li>
@@ -149,13 +149,13 @@ $labeltxt=$_GET["label"];
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">包包</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
+                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=肩包">肩包</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=腰包">腰包</a></li>
                 </ul>
                 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">隨身物品</strong></div>
-                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
+                <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=錢包">錢包</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=雨傘">雨傘</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=打火機">打火機</a></li>
@@ -390,12 +390,12 @@ $labeltxt=$_GET["label"];
                 <div class="col-lg-6">
                   <div class="p-4 my-md-4">
                     <form method="post" action="edit_post.php?item_id=<?php echo $id?>">
-                    <label class="h4">名稱</label><input class="form-control" type="text" name="item_name" value=<?php echo $name?>>
-                    <label class="text-muted">敘述</label><input class="form-control form-control-lg" type="text" name="item_text" value=<?php echo $text?>>
-                    <label class="text-muted">遺失時間</label><input class="form-control" type="datetime-local" name="item_time" value=<?php echo $time?>>
+                    <label class="h4">名稱</label><input class="form-control" type="text" name="item_name" value=<?php echo $name?> required>
+                    <label class="text-muted">敘述</label><input class="form-control form-control-lg" type="text" name="item_text" value=<?php echo $text?> required>
+                    <label class="text-muted">遺失時間</label><input class="form-control" type="datetime-local" name="item_time" value=<?php echo $time?> required>
                     <div class="row align-items-stretch mb-4 gx-0"> 
-                    <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?>>
-                    <label class="text-muted">標籤</label><input type="text" class="show-tick form-control" name="item_label" data-customclass="form-control form-control-lg rounded-0" value="<?php echo $label?>">
+                    <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?> required>
+                    <label class="text-muted">標籤</label><input type="text" class="show-tick form-control" name="item_label" data-customclass="form-control form-control-lg rounded-0" value="<?php echo $label?>" required>
                   </div>
                   <input type="submit" class="btn btn-info" value="儲存">
                     </form>
