@@ -1,9 +1,8 @@
 <?php
 session_start();
-
+include "../connect.php";
 $account=$_POST["account"];
 $password=$_POST["password"];
-$link=mysqli_connect("localhost","root","12345678","sa");
 
 $sql="select * from account where account_id='$account' and account_password='$password'";
 $rs=mysqli_query($link,$sql);

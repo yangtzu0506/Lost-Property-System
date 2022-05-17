@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php session_start();
 $account_id=$_SESSION['account'];
-
+include "connect.php";
 if(!isset($_SESSION["level"])){ 
   
   ?>

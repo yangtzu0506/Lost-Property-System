@@ -1,5 +1,5 @@
 <?php
-$link=mysqli_connect("localhost","root","","sa");
+include "connect.php";
 $item_id = $_GET["item_id"];
 $item_name = $_POST["item_name"];
 $item_text = $_POST["item_text"];

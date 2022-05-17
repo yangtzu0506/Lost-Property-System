@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <?php session_start();
-
+include "connect.php";
 $searchtxt=$_GET["search"];
-
 $labeltxt=$_GET["label"];
-
-
-
-
 ?>
 <html>
   <head>
@@ -61,9 +56,9 @@ $labeltxt=$_GET["label"];
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link" href="index.php">拾獲物管理</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟示管理</a>
+                <li class="nav-item"><a class="nav-link active" id="pagesDropdown" href="find.php">尋物啟示管理</a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理區</a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理區</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="confirm.php">貼文審核</a><a class="dropdown-item border-0 transition-link" href="post.php">代發貼文</a><a class="dropdown-item border-0 transition-link" href="end_case.php">下架區</a></div>
                 </li>
               </ul>
@@ -253,7 +248,7 @@ $labeltxt=$_GET["label"];
                   <!--  Modal -->
                   
                 <?php
-                $link=mysqli_connect("localhost","root","12345678","sa");
+                // $link=mysqli_connect("localhost","root","","sa");
                 if(isset($labeltxt)){
                 $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
                 }
