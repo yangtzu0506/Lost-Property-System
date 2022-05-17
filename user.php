@@ -42,13 +42,13 @@ $account=$_SESSION["account"];
               <ul class="navbar-nav me-auto">
                 <!-- 使用者權限 索引列-->
                <?php if($_SESSION["level"]=='0'){ ?>                       
-                <li class="nav-item"><a class="nav-link active" href="index.php">拾獲貼文</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php">拾獲貼文</a></li>
                 <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
                 <li class="nav-item"><a class="nav-link"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人化</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link active" href="#">個人化</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
                 </li>
               </ul>
 
@@ -124,8 +124,9 @@ $account=$_SESSION["account"];
 
               }
               ?>
-              <div class="col-lg-4 order-2 order-lg-1"><ul class='mb-0 list-inline'>
-                <li class='list-inline-item m-0 p-0'><h2 class="list-inline-item text-uppercase mb-4">個人資料</h2></li><li class='list-inline-item m-1 p-1'><a class='btn btn-sm btn-outline-dark' href='#<?php echo $name?>edit' data-bs-toggle='modal' ><i class='fas fa-edit'></i></a></li>
+              <div class="col-lg-4 order-2 order-lg-1">
+              <ul class='mb-0 list-inline'>
+                <li class='list-inline-item m-0 p-0'><h2 class="list-inline-item text-uppercase mb-6" style="vertical-align:middle">個人資料</h2></li><li class='list-inline-item m-1 p-1'><a class='btn btn-sm btn-outline' style="width:50px;margin-left:200px;vertical-align:middle" href='#<?php echo $name?>edit' data-bs-toggle='modal' ><img src="img/edit.png" width='30px'></a></li>
               </ul>
                 <div class="py-3 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold" style="font-size:20px">帳號</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
@@ -153,23 +154,8 @@ $account=$_SESSION["account"];
              
                 <div class="row mb-3 align-items-center">
                   <div class="col-lg-6 mb-2 mb-lg-0">
-                  <h2 class="text-uppercase mb-4">個人刊登</h2>
+                  <h2 class="text-uppercase mb-6">個人刊登</h2>
                     <!--<p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>-->
-                  </div>
-                  <div class="col-lg-6">
-                    
-                    <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
-                      <li class="list-inline-item">
-                        
-                          <form action="index.php" method=get>
-                          <div class="input-group">
-
-                          <input class="form-control form-control-lg" aria-describedby="button-addon2" type=text name="search" value="<?php echo $searchtxt?>">
-                          <button class="btn btn-dark" id="button-addon2" type="submit" value="搜尋">搜尋</button>
-                          </div>
-                          </form>
-                      </li>
-                    </ul>
                   </div>
                 </div>
                 <!-- PRODUCT-->
