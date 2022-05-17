@@ -127,7 +127,6 @@ $labeltxt=$_GET["label"];
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=項鍊">項鍊</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=戒指">戒指</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳環">耳環</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=眼鏡">眼鏡</a></li>
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">證件</strong></div>
@@ -145,6 +144,8 @@ $labeltxt=$_GET["label"];
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=平板">平板</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=滑鼠">滑鼠</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=音響">音響</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=相機">相機</a></li>
+
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">包包</strong></div>
@@ -377,7 +378,7 @@ $labeltxt=$_GET["label"];
           </div>
         </div>
       </div>
-      
+       <!-- 編輯資料彈窗 -->
       <div class="modal fade" id="<?php echo $name?>edit" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content overflow-hidden border-0">
@@ -394,8 +395,6 @@ $labeltxt=$_GET["label"];
                     <label class="text-muted">遺失時間</label><input class="form-control" type="datetime-local" name="item_time" value=<?php echo $time?>>
                     <div class="row align-items-stretch mb-4 gx-0"> 
                     <label class="text-muted">遺失地點</label><input class="form-control" type="text" name="item_place" value=<?php echo $place?>>
-          
-
                     <label class="text-muted">標籤</label><input type="text" class="show-tick form-control" name="item_label" data-customclass="form-control form-control-lg rounded-0" value="<?php echo $label?>">
                   </div>
                   <input type="submit" class="btn btn-info" value="儲存">

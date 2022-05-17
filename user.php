@@ -120,13 +120,40 @@ $account=$_SESSION["account"];
                 $name=$record["account_name"];
                 $cellphone=$record["account_cellphone"];
                 $password=$record["account_password"];
-                // $email=$record["account_email"];
+                $email=$record["account_email"];
 
               }
               ?>
+               <!-- 用戶資料編輯資料彈窗 -->
+               <div class="modal fade" id="useredit" tabindex="-1">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <div class="modal-content overflow-hidden border-0">
+                    <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body p-0">
+                        <div class="col-lg-12" >
+                          <div class="p-4 my-md-8">
+                          <h1 class="h2 text-uppercase mb-0">編輯資料</h1>
+                            <form method="post" action="edit_user.php?account_id=<?php echo $account?>">
+                            <label class="h4 text-muted">帳號</label><input class="form-control form-control-lg" type="text" name="account_id" value=<?php echo $account?> readonly><br>
+                            <label class="h5 text-muted">密碼</label><input class="form-control form-control-lg" type="text" name="account_password" value=<?php echo $password?>><br>
+                            <label class="h5 text-muted">名稱</label><input class="form-control form-control-lg" type="text" name="account_name" value=<?php echo $name?>><br>
+                           
+                            <label class="h5 text-muted">聯絡電話</label><input class="form-control form-control-lg" type="text" name="account_cellphone" value=<?php echo $cellphone?>><br>
+                            <label class="h5 text-muted">電子郵件</label><input class="form-control form-control-lg" type="text" name="account_email" value=<?php echo $email?>><br>
+
+                          <input type="submit" class="btn btn-info" value="儲存">
+                            </form>
+                            </div>
+                  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-lg-4 order-2 order-lg-1">
               <ul class='mb-0 list-inline'>
-                <li class='list-inline-item m-0 p-0'><h2 class="list-inline-item text-uppercase mb-6" style="vertical-align:middle">個人資料</h2></li><li class='list-inline-item m-1 p-1'><a class='btn btn-sm btn-outline' style="width:50px;margin-left:200px;vertical-align:middle" href='#<?php echo $name?>edit' data-bs-toggle='modal' ><img src="img/edit.png" width='30px'></a></li>
+                <li class='list-inline-item m-0 p-0'><h2 class="list-inline-item text-uppercase mb-6" style="vertical-align:middle">個人資料</h2></li><li class='list-inline-item m-1 p-1'><a class='btn btn-sm btn-outline' style="width:50px;margin-left:200px;vertical-align:middle" href='#useredit' data-bs-toggle='modal' ><img src="img/edit.png" width='30px'></a></li>
               </ul>
                 <div class="py-3 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold" style="font-size:20px">帳號</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
@@ -204,7 +231,6 @@ $account=$_SESSION["account"];
                       $account_id = $record[8];
 
                       ?>
-
       <!-- 詳細資料彈窗 -->
       <div class="modal fade" id="<?php echo $name?>" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">

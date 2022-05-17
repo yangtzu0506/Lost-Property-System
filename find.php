@@ -133,7 +133,6 @@ $labeltxt=$_GET["label"];
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=項鍊">項鍊</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=戒指">戒指</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳環">耳環</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=眼鏡">眼鏡</a></li>
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">證件</strong></div>
@@ -151,6 +150,7 @@ $labeltxt=$_GET["label"];
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=平板">平板</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=滑鼠">滑鼠</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=音響">音響</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=相機">相機</a></li>
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">包包</strong></div>
@@ -165,7 +165,6 @@ $labeltxt=$_GET["label"];
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=雨傘">雨傘</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=打火機">打火機</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=香水">香水</a></li>
-
                 </ul>
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">文教用品</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
