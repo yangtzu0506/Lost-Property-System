@@ -49,7 +49,7 @@ if(!isset($_SESSION["level"])){
                 <!-- 使用者權限 索引列-->
                <?php if($_SESSION["level"]=='0'){ ?>                       
                 <li class="nav-item"><a class="nav-link" href="index.php">拾獲貼文</a></li>
-                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
+                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟事清單</a></li>
                 <li class="nav-item"><a class="nav-link active"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
