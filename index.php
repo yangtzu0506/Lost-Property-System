@@ -72,7 +72,7 @@ $labeltxt=$_GET["label"];
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link active" href="index.php">拾獲貼文</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
+                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟事清單</a></li>
                 <li class="nav-item dropdown"><a class="nav-link" id="pagesDropdown" href="post.php"  aria-haspopup="true" aria-expanded="false">發布貼文</a>
                 </li>
               </ul>
@@ -304,7 +304,6 @@ $labeltxt=$_GET["label"];
              </script> -->
                   <!--  Modal -->
                 <?php
-               
                 if(isset($labeltxt)){
 
                 $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
@@ -415,7 +414,10 @@ $labeltxt=$_GET["label"];
                         <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證";} ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" alt='...'></a>
                         <div class='product-overlay'>
                           <ul class='mb-0 list-inline'>
+                          <?php  //若權限為1(管理者) 或 權限為0(使用者)且 刊登帳號=登入帳號 且 尚未通過認證 即可編輯
+                            if($_SESSION["level"]=='1' ){ ?>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href='end_case/end_case_end.php?id=<?php echo $id ?>'>結案</a></li>
+                          <?php }?>
                             <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'><i class='fas fa-expand'></i></a></li>
                             <?php  //若權限為1(管理者) 或 權限為0(使用者)且 刊登帳號=登入帳號 且 尚未通過認證 即可編輯
                             if($_SESSION["level"]=='1' || ($_SESSION["level"]=='0' && $_SESSION["account"]==$account_id && $confirm==0)){ ?>
