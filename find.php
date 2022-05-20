@@ -171,57 +171,6 @@ $labeltxt=$_GET["label"];
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=鉛筆盒">鉛筆盒</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=文具">文具</a></li>
                 </ul>
-                
-                <h6 class="text-uppercase mb-4">Price range</h6>
-                <div class="price-range pt-4 mb-5">
-                  <div id="range"></div>
-                  <div class="row pt-2">
-                    <div class="col-6"><strong class="small fw-bold text-uppercase">From</strong></div>
-                    <div class="col-6 text-end"><strong class="small fw-bold text-uppercase">To</strong></div>
-                  </div>
-                </div>
-                <h6 class="text-uppercase mb-3">Show only</h6>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_1">
-                  <label class="form-check-label" for="checkbox_1">Returns Accepted</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_2">
-                  <label class="form-check-label" for="checkbox_2">Returns Accepted</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_3">
-                  <label class="form-check-label" for="checkbox_3">Completed Items</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_4">
-                  <label class="form-check-label" for="checkbox_4">Sold Items</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_5">
-                  <label class="form-check-label" for="checkbox_5">Deals &amp; Savings</label>
-                </div>
-                <div class="form-check mb-4">
-                  <input class="form-check-input" type="checkbox" id="checkbox_6">
-                  <label class="form-check-label" for="checkbox_6">Authorized Seller</label>
-                </div>
-                <h6 class="text-uppercase mb-3">Buying format</h6>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_1">
-                  <label class="form-check-label" for="radio_1">All Listings</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_2">
-                  <label class="form-check-label" for="radio_2">Best Offer</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_3">
-                  <label class="form-check-label" for="radio_3">Auction</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_4">
-                  <label class="form-check-label" for="radio_4">Buy It Now</label>
-                </div>
               </div>
               
               <!-- SHOP LISTING-->
@@ -250,20 +199,20 @@ $labeltxt=$_GET["label"];
                 <?php
                 // $link=mysqli_connect("localhost","root","","sa");
                 if(isset($labeltxt)){
-                $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
+                $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%' order by item_time";
                 }
 	              else if($searchtxt!="")
 	              {
                 
-                $sql="select * from item where item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%'";
+                $sql="select * from item where item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%' order by item_time";
         
 		            }
 	              else
 	              {
               
-                $sql="select * from item where item_id like '2%'";
+                $sql="select * from item where item_id like '2%' order by item_time";
 		            }
-                $all="select * from item where item_id like '2%'";
+                $all="select * from item where item_id like '2%' order by item_time";
                 $all_rs=mysqli_query($link,$all);
                 $rs=mysqli_query($link,$sql);
 	              //$rs=mysql_query($sql,$link);
@@ -305,7 +254,7 @@ $labeltxt=$_GET["label"];
                       <p class="text-mb mb-4">標籤：<?php echo $label?></p>
                      
                       </div>
-                      <a class="btn btn-sm btn-outline-dark" href="cart.html">認領</a> 
+                    
                     </div>
                   </div>
                   <p align=right class="text-muted" style="margin-right:30px">使用者名稱：<?php echo $account_id?></p>
@@ -321,7 +270,7 @@ $labeltxt=$_GET["label"];
             <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body p-0">
               <div class="row align-items-stretch">
-                <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style="background: url(<?php echo $img?>)" href="<?php echo $img?>" data-gallery="gallery1" data-glightbox="<?php echo $name?>"></a></div>
+                <div class="col-lg-6 p-lg-0"><img class="glightbox product-view d-block h-100 bg-cover bg-center" style="background: url(<?php echo $img?>)" data-gallery="gallery1" data-glightbox="<?php echo $name?>"></div>
                 <div class="col-lg-6">
                   <div class="p-4 my-md-4">
                   <form method="post" action="edit_post.php?item_id=<?php echo $id?>">
@@ -345,7 +294,7 @@ $labeltxt=$_GET["label"];
       <div class='col-lg-4 col-sm-6'>
           <div class='product text-center'>
               <div class='mb-3 position-relative'>
-                 <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證"; } ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" alt='...'></a>
+                 <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證"; } ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" style="width: 304px;height: 334px;" alt='...'></a>
                     <div class='product-overlay'>
                       <ul class='mb-0 list-inline'>
                     <?php  if($_SESSION["level"]=='1' ){ ?>

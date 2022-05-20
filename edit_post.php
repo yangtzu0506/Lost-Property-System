@@ -17,7 +17,7 @@ $sql="update item set item_name = '$item_name',item_text='$item_text',item_time=
     else{?>
     <script> 
     alert("編輯錯誤，請檢查資料");
-    // location.href="index.php";
+    location.href="index.php";
 
     </script>
 <?php

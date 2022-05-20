@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <?php session_start();
 include "connect.php";
-$searchtxt=$_GET["search"];
+$searchtxt=$_POST["search"];
 $labeltxt=$_GET["label"];
+$displayConfirm=$_GET["displayConfirm"];
+echo $displayConfirm;
+
 ?>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -42,7 +46,7 @@ $labeltxt=$_GET["label"];
                 <!-- 使用者權限 索引列-->
                <?php if($_SESSION["level"]=='0'){ ?>                       
                 <li class="nav-item"><a class="nav-link active" href="index.php">拾獲貼文</a></li>
-                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟示清單</a></li>
+                <li class="nav-item"><a class="nav-link" href="find.php">尋物啟事清單</a></li>
                 <li class="nav-item"><a class="nav-link"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
@@ -56,7 +60,7 @@ $labeltxt=$_GET["label"];
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link active" href="index.php">拾獲物管理</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟示管理</a>
+                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟事管理</a>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理區</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="confirm.php">貼文審核</a><a class="dropdown-item border-0 transition-link" href="post.php">代發貼文</a><a class="dropdown-item border-0 transition-link" href="end_case.php">下架區</a></div>
@@ -93,145 +97,102 @@ $labeltxt=$_GET["label"];
               <div class="col-lg-6">
                 <h1 class="h2 text-uppercase mb-0">拾獲物清單</h1>
               </div>
-              <div class="col-lg-6 text-lg-end">
-                <nav aria-label="breadcrumb">
-                  <!-- <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
-                    <li class="breadcrumb-item"><a class="text-dark" href="index.html">遺失物系統</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">遺失物系統</li>
-                  </ol> -->
-                </nav>
-              </div>
+             
             </div>
           </div>
         </section>
         <section class="py-5">
           <div class="container p-0">
             <div class="row">
-              <!-- SHOP SIDEBAR-->
+              <!-- 側邊欄-->
+              
               <div class="col-lg-3 order-2 order-lg-1">
-                <h5 class="text-uppercase mb-4">類別</h5>
+                <li class="list-inline-item">
+                <h5 class="text-uppercase mb-4">類別</h5></li>
+               
+
+                  <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
+                  <?php if($displayConfirm==0){?>
+                  <li class="mb-2"><input class="form-check-input" type="checkbox" id="checkbox_1" onchange="<?php $displayConfirm=1?>">
+                  <label class="form-check-label" for="checkbox_1">已認證貼文</label></li>
+                
+                  <?php }else{?>
+                  <li class="mb-2"><input class="form-check-input" type="checkbox" id="checkbox_1" checked onchange="<?php $displayConfirm=0?>">
+                  <label class="form-check-label" for="checkbox_1">已認證貼文</label></li>
+                  <?php }?>
+                </ul>
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">衣物</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=外套">外套</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=上衣">上衣</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=褲子">褲子</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=襪子">襪子</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=鞋子">鞋子</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=外套&displayConfirm=<?php echo $displayConfirm?>">外套</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=上衣&displayConfirm=<?php echo $displayConfirm?>">上衣</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=褲子&displayConfirm=<?php echo $displayConfirm?>">褲子</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=襪子&displayConfirm=<?php echo $displayConfirm?>">襪子</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=鞋子&displayConfirm=<?php echo $displayConfirm?>">鞋子</a></li>
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">配件</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=帽子">帽子</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=眼鏡">眼鏡</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=手錶">手錶</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=項鍊">項鍊</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=戒指">戒指</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳環">耳環</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=帽子&displayConfirm=<?php echo $displayConfirm?>">帽子</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=眼鏡&displayConfirm=<?php echo $displayConfirm?>">眼鏡</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=手錶&displayConfirm=<?php echo $displayConfirm?>">手錶</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=項鍊&displayConfirm=<?php echo $displayConfirm?>">項鍊</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=戒指&displayConfirm=<?php echo $displayConfirm?>">戒指</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳環&displayConfirm=<?php echo $displayConfirm?>">耳環</a></li>
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">證件</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=學生證">學生證</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=身份證">身份證</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=駕照">駕照</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=學生證&displayConfirm=<?php echo $displayConfirm?>">學生證</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=駕照&displayConfirm=<?php echo $displayConfirm?>">駕照</a></li>
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">3C產品</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=手機">手機</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳機">耳機</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=電腦">電腦</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=平板">平板</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=滑鼠">滑鼠</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=音響">音響</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=相機">相機</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=手機&displayConfirm=<?php echo $displayConfirm?>">手機</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=耳機&displayConfirm=<?php echo $displayConfirm?>">耳機</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=電腦&displayConfirm=<?php echo $displayConfirm?>">電腦</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=平板&displayConfirm=<?php echo $displayConfirm?>">平板</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=滑鼠&displayConfirm=<?php echo $displayConfirm?>">滑鼠</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=音響&displayConfirm=<?php echo $displayConfirm?>">音響</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=相機&displayConfirm=<?php echo $displayConfirm?>">相機</a></li>
 
                 </ul>
 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">包包</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=肩包">肩包</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=腰包">腰包</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=肩包&displayConfirm=<?php echo $displayConfirm?>">肩包</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=腰包&displayConfirm=<?php echo $displayConfirm?>">腰包</a></li>
                 </ul>
                 
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">隨身物品</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=錢包">錢包</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=雨傘">雨傘</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=打火機">打火機</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=香水">香水</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=錢包&displayConfirm=<?php echo $displayConfirm?>">錢包</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=雨傘&displayConfirm=<?php echo $displayConfirm?>">雨傘</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=打火機&displayConfirm=<?php echo $displayConfirm?>">打火機</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=香水&displayConfirm=<?php echo $displayConfirm?>">香水</a></li>
 
                 </ul>
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">文教用品</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal mb-5">
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=鉛筆盒">鉛筆盒</a></li>
-                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=文具">文具</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=鉛筆盒&displayConfirm=<?php echo $displayConfirm?>">鉛筆盒</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=文具&displayConfirm=<?php echo $displayConfirm?>">文具</a></li>
                 </ul>
-                
-                <h6 class="text-uppercase mb-4">Price range</h6>
-                <div class="price-range pt-4 mb-5">
-                  <div id="range"></div>
-                  <div class="row pt-2">
-                    <div class="col-6"><strong class="small fw-bold text-uppercase">From</strong></div>
-                    <div class="col-6 text-end"><strong class="small fw-bold text-uppercase">To</strong></div>
-                  </div>
-                </div>
-                <h6 class="text-uppercase mb-3">Show only</h6>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_1">
-                  <label class="form-check-label" for="checkbox_1">Returns Accepted</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_2">
-                  <label class="form-check-label" for="checkbox_2">Returns Accepted</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_3">
-                  <label class="form-check-label" for="checkbox_3">Completed Items</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_4">
-                  <label class="form-check-label" for="checkbox_4">Sold Items</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="checkbox" id="checkbox_5">
-                  <label class="form-check-label" for="checkbox_5">Deals &amp; Savings</label>
-                </div>
-                <div class="form-check mb-4">
-                  <input class="form-check-input" type="checkbox" id="checkbox_6">
-                  <label class="form-check-label" for="checkbox_6">Authorized Seller</label>
-                </div>
-                <h6 class="text-uppercase mb-3">Buying format</h6>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_1">
-                  <label class="form-check-label" for="radio_1">All Listings</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_2">
-                  <label class="form-check-label" for="radio_2">Best Offer</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_3">
-                  <label class="form-check-label" for="radio_3">Auction</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input" type="radio" name="customRadio" id="radio_4">
-                  <label class="form-check-label" for="radio_4">Buy It Now</label>
-                </div>
               </div>
               
-              <!-- SHOP LISTING-->
+              <!-- 貼文區-->
               <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                 <div class="row mb-3 align-items-center">
                   <div class="col-lg-6 mb-2 mb-lg-0">
+                  <div class="form-check mb-10">
+                   
+                    </div>
                     <!--<p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>-->
                   </div>
                   <div class="col-lg-6">
                     <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
                       <li class="list-inline-item">
-                          <form action="index.php" method=get>
+                          <form action="index.php?displayConfirm=<?php echo $displayConfirm?>" method=post>
                           <div class="input-group">
-
                           <input class="form-control form-control-lg" aria-describedby="button-addon2" type=text name="search" value="<?php echo $searchtxt?>">
                           <button class="btn btn-dark" id="button-addon2" type="submit" value="搜尋">搜尋</button>
                           </div>
@@ -240,89 +201,26 @@ $labeltxt=$_GET["label"];
                     </ul>
                   </div>
                 </div>
-                <!-- PRODUCT-->
-                <!-- 編輯資料彈窗 -->
-      <!-- <script type="text/javascript">
-            function label(e){
-            var label=e;
-            var sectors=new Array();
-            sectors[0]=['請選擇標籤'];
-            sectors[1]=['外套','上衣','褲子','襪子','鞋子'];
-            sectors[2]=['帽子','眼鏡','手錶','項鍊','戒指','耳環','眼鏡'];
-            sectors[3]=['學生證','身分證','駕照'];
-            sectors[4]=['手機','耳機','電腦','平板','滑鼠','音響','相機'];
-            sectors[5]=['肩包','腰包','手提包'];
-            sectors[6]=['錢包','雨傘','香水','打火機'];
-            sectors[7]=['鉛筆盒','文具'];
-            var index;
-            switch(label){
-              case "衣物":
-              index=1;
-              break;
-              case "配件":
-              index=2;
-              break;
-              case "證件":
-              index=3;
-              break;
-              case "3C產品":
-              index=4;
-              break;
-              case "包包":
-              index=5;
-              break;
-              case "隨身物品":
-              index=6;
-              break;
-              case "文教用品":
-              index=7;
-              break;
-              case "其他":
-              index=8;
-              break;
-            }
-           //換標籤內的選項
-           var Sinner="";
-            if(index==8){
-            var otherselect=document.getElementById("other");
-            Sinner=Sinner+"<input type='text' class='form-control form-control' name='item_label' placeholder='請輸入標籤類別'>";
-            otherselect.innerHTML=Sinner;
-            index=0;
-            
-            }else{
-              var otherselect=document.getElementById("other");
-              Sinner="<select class='show-tick form-control' id='test1' name='item_label' data-customclass='form-control form-control-lg rounded-0' >";
-              otherselect.innerHTML=Sinner;
-              // var Sinner="";
-
-              for(var i=0;i<sectors[index].length;i++){
-                Sinner=Sinner+'<option value='+sectors[index][i]+'>'+sectors[index][i]+'</option>';
-                          }
-            var sectorSelect=document.getElementById("test1");
-            sectorSelect.innerHTML=Sinner;
-              }
-            }
-             </script> -->
-                  <!--  Modal -->
+               
                 <?php
                 if(isset($labeltxt)){
+                if($displayConfirm==1){
+                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%' order by item_time";}
+                else{
+                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%' and item_confirm=1 order by item_time";}
+                                      }
+	              else if($searchtxt!=""){
+                if($displayConfirm==1){
+                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%' order by item_time";}
+                else{
+                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%' and item_confirm=1 order by item_time";}
+                                      }
+	              else{
+                if($displayConfirm==1){
+                $sql="select * from item where item_id like '1%' order by item_time";}
+                else{
+                $sql="select * from item where item_id like '1%' and item_confirm=1 order by item_time";}
 
-                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%'";
-               
-
-        
-
-                }
-	              else if($searchtxt!="")
-	              {
-                
-                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%'";
-        
-		            }
-	              else
-	              {
-              
-                $sql="select * from item where item_id like '1%'";
 		            }
                 $all="select * from item";
                 $all_rs=mysqli_query($link,$all);
@@ -368,7 +266,7 @@ $labeltxt=$_GET["label"];
                       <p class="text-mb mb-4">標籤：<?php echo $label?></p>
                      
                       </div>
-                      <a class="btn btn-sm btn-outline-dark" href="cart.html">認領</a> 
+
                     </div>
                   </div>
                   <p align=right class="text-muted" style="margin-right:30px">使用者名稱：<?php echo $account_id?></p>
@@ -410,7 +308,7 @@ $labeltxt=$_GET["label"];
                     <div class='col-lg-4 col-sm-6'>
                     <div class='product text-center'>
                       <div class='mb-3 position-relative'>
-                        <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證";} ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" alt='...'></a>
+                        <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證";} ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" style="width: 304px;height: 334px;" alt='...'></a>
                         <div class='product-overlay'>
                           <ul class='mb-0 list-inline'>
                           <?php  //若權限為1(管理者) 或 權限為0(使用者)且 刊登帳號=登入帳號 且 尚未通過認證 即可編輯
@@ -425,7 +323,7 @@ $labeltxt=$_GET["label"];
                           </ul>
                         </div>
                       </div>
-                      <h6> <a class='reset-anchor' href='detail.html'><?php echo $name?></a></h6>
+                      <h6> <a class='reset-anchor' href='#'><?php echo $name?></a></h6>
                     </div>
                   </div>
                   <?php

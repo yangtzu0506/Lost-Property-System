@@ -123,7 +123,7 @@ $labeltxt=$_GET["label"];
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
-                    <li class="breadcrumb-item"><a class="text-dark" href="index.html">首頁</a></li>
+                    <li class="breadcrumb-item"><a class="text-dark" href="index.php">首頁</a></li>
                     <li class="breadcrumb-item active" aria-current="page">下架區</li>
                   </ol>
                 </nav>
