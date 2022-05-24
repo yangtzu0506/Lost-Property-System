@@ -264,6 +264,7 @@ $labeltxt=$_GET["label"];
           </div>
         </div>
       </div>
+      
       <div class="modal fade" id="<?php echo $name?>edit" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content overflow-hidden border-0">
