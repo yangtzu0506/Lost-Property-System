@@ -44,7 +44,7 @@ class PHPMailer
      *
      * @var string
      */
-    public $CharSet = 'iso-8859-1';
+    public $CharSet = 'utf-8';
 
     /**
      * The MIME Content-type of the message.
@@ -1146,7 +1146,7 @@ class PHPMailer
             return false;
         }
         $this->From = $address;
-        $this->FromName = $name;
+        $this->FromName = "系統管理員";
         if ($auto) {
             if (empty($this->Sender)) {
                 $this->Sender = $address;
