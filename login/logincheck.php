@@ -20,6 +20,8 @@ else{
        alert("請確認帳號密碼"); 
        location.href="login.php";
     </script>
+    
     <?php
+    echo $sql;
     }
 ?>

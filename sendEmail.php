@@ -1,6 +1,8 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 
+$method=$_GET["method"];
+
 if(isset($_GET['name']) && isset($_GET['email'])){
     echo "123";
     $name = $_GET['name'];
@@ -31,6 +33,9 @@ if(isset($_GET['name']) && isset($_GET['email'])){
     $mail->Body = $body;
     
     if($mail->send()){
+        if($method="validate"){
+        echo "<script>location.href='emailcheck.php'</script>";
+        }
         $status = "success";
         $response = "Email is sent!";
         echo "<script>alert('通知成功!');location.href='end_case.php'</script>";
