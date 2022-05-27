@@ -4,7 +4,9 @@
 include "connect.php";
 $searchtxt=$_GET["search"];
 $labeltxt=$_GET["label"];
+
 ?>
+</script>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -184,6 +186,8 @@ $labeltxt=$_GET["label"];
                       $label=$record[5];
                       $img=$record[6];
                       $confirm = $record[7];
+                      $account_id = $record[8];
+
                       ?>
                       <?php if($confirm==2){ ?>
 
@@ -234,6 +238,8 @@ $labeltxt=$_GET["label"];
                       <td class="p-3 align-middle border-light">
                       <ul class='mb-0 list-inline'>
                         <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="#<?php echo $name?>" data-bs-toggle='modal'>編輯</a></li>
+                        <li class='list-inline-item m-0 p-0'><a class='btn btn-sm btn-outline-dark' href="notice.php?account_id=<?php echo $account_id?>&item_name=<?php echo $name?>">通知</a></li>
+                      
                       </ul>
                       </td>
                     </tr>
@@ -242,6 +248,8 @@ $labeltxt=$_GET["label"];
                   </tbody>
                 </table>
               </div>
+              
+
               <!-- CART NAV-->
               <div class="bg-light px-4 py-3">
                 <div class="row align-items-center text-center">

@@ -327,7 +327,8 @@ echo $displayConfirm;
                     </div>
                   </div>
                   <?php
-                      }}
+                      }
+                    }
                   ?>
                 </div>
                 <!-- PAGINATION-->

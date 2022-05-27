@@ -1,11 +1,12 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 
-if(isset($_POST['name']) && isset($_POST['email'])){
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $body = $_POST['body'];
+if(isset($_GET['name']) && isset($_GET['email'])){
+    echo "123";
+    $name = $_GET['name'];
+    $email = $_GET['email'];
+    $subject = $_GET['subject'];
+    $body = $_GET['body'];
 
     require_once "PHPMailer/PHPMailer.php";
     require_once "PHPMailer/SMTP.php";
@@ -26,19 +27,20 @@ if(isset($_POST['name']) && isset($_POST['email'])){
     $mail->isHTML(true);
     $mail->setFrom($email, $name);
     $mail->addAddress($email);
-    $mail->Subject = ("$email ($subject)");
+    $mail->Subject = $subject;
     $mail->Body = $body;
-
+    
     if($mail->send()){
         $status = "success";
         $response = "Email is sent!";
+        echo "<script>alert('通知成功!');location.href='end_case.php'</script>";
     }
     else
     {
         $status = "failed";
         $response = "Something is wrong: <br>" . $mail->ErrorInfo;
     }
-
+    header("end_case.php");
     exit(json_encode(array("status" => $status, "response" => $response)));
 }
 
