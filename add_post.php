@@ -2,9 +2,6 @@
 session_start();
 
 include "connect.php";
-
-
-
 $account_id=$_GET["account_id"];
 $post_type = $_POST["post_type"];
 $item_name = $_POST["item_name"];
@@ -28,7 +25,6 @@ $id=mysqli_query($link,$max_id);
 $item_list=mysqli_fetch_row($id);
 $item_id=$item_list[0]+1;
 //找出最大id+1作為下一個id
-echo "123";
 //上傳圖片
 $type=$_FILES["item_img"]["type"];
 $name=$_FILES["item_img"]["name"];

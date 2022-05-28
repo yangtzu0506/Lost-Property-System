@@ -50,10 +50,12 @@
 				<div class="form-group">
 	            	<input type="text" class="form-control" name="email" placeholder="電子郵件" required style="background-color: rgba(255,255,255,0.2);">
 	            </div>
-	            <div class="form-group">
-	            	<button type="submit" class="form-control btn btn-primary submit px-3">註冊</button>
+	            <div class="form-group col-lg-12">
+	            	<button type="submit" class="form-control btn btn-secondary submit px-3" style="background-color:#6C6C6C;opacity:0.8">註冊</button>
+
 	            </div>
-	            <div class="form-group d-md-flex">
+	            <div class="form-group col-lg-12">
+				<a href="login.php"><button type="button" class="form-control btn btn submit px-3" style="background-color:#B15BFF;opacity:0.8">已有帳號，進行登入</button></a>
 	            	<div class="w-50">
 		            	
 								</div>
