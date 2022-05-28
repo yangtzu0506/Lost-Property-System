@@ -132,7 +132,18 @@ $labeltxt=$_GET["label"];
           </div>
         </section>
         <section class="py-5">
-          <h2 class="h5 text-uppercase mb-4">待審核貼文</h2>
+          <div class="row mb-3 align-items-center">
+          <div class="col-lg-6"><h2 class="h5 text-uppercase mb-4">待審核貼文</h2></div>
+          <div class="col-lg-6">
+            <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
+            <li class="list-inline-item">
+          <form action="confirm.php" method=get>
+            <div class="input-group">
+              <input class="form-control form-control-lg" aria-describedby="button-addon2" type=text name="search" value="<?php echo $searchtxt?>">
+              <button class="btn btn-dark" id="button-addon2" type="submit" value="搜尋">搜尋</button>
+              </div>
+          </form>
+          </li></ul></div></div>
           <div class="row">
             <div class="col-lg-12 mb-5 mb-lg-0">
               <!-- CART TABLE-->
@@ -149,7 +160,6 @@ $labeltxt=$_GET["label"];
                   </thead>
                   <tbody class="border-0">
                   <?php
-                // $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
                 $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
                 }
@@ -165,8 +175,7 @@ $labeltxt=$_GET["label"];
                 $sql="select * from item";
 		            }
                 $delete_item = "delete * from item";
-                $all="select * from item";
-                $all_rs=mysqli_query($link,$all);
+               
                 $rs=mysqli_query($link,$sql);
 	              //$rs=mysql_query($sql,$link);
 
@@ -221,7 +230,7 @@ $labeltxt=$_GET["label"];
                         <p class="mb-0 small"><?php echo $id?></p>
                       </td>
                       <th class="ps-0 py-3 border-light" scope="row">
-                        <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" href="detail.html"><img src="<?php echo $img?>" alt="..." width="70"/></a>
+                        <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" href="#"><img src="<?php echo $img?>" alt="..." width="70"/></a>
                           <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" href="detail.html"><?php echo $name?></a></strong></div>
                         </div>
                       </th>

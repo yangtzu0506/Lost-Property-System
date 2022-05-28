@@ -28,22 +28,22 @@
 
 		      	<form class="signin-form" action="logincheck.php" method="post">
 		      		<div class="form-group">
-		      			<input type="text" class="form-control" name="account" placeholder="帳號" required>
+		      			<input type="text" class="form-control" name="account" placeholder="帳號" required style="background-color: rgba(255,255,255,0.2);">
 		      		</div>
 	            <div class="form-group">
-	              <input id="password-field" type="password" class="form-control" name="password" placeholder="密碼" required>
+	              <input id="password-field" type="password" class="form-control" name="password" placeholder="密碼" required style="background-color: rgba(255,255,255,0.2);">
 	              <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
 	            </div>
 	            <div class="form-group">
-	            	<button type="submit" class="form-control btn btn-primary submit px-3">登入</button>
+	            	<button type="submit" class="form-control btn btn- submit px-3">登入</button>
 	            </div>
 				</form>
 	            <div class="form-group d-md-flex">
 								<div class="w-50 text-md-left">
-								<button type="submit" class="form-control btn btn-primary px-3" style="font-color:black;width:160px"><a href="register.php" style="color:black">註冊</a></button>
+								<a href="register.php" style="color:white"><button type="submit" class="form-control btn btn-secondary  px-3" style="font-color:black;width:160px;background-color:#6C6C6C;opacity:0.9">註冊</button></a>
 								</div>
 								<div class="w-50 text-md-right">
-								<button type="submit" class="form-control btn btn-primary px-3" style="font-color:black;width:160px"><a href="#" style="color:black">忘記帳號</a></button>
+								<a href="#" style="color:white"><button type="submit" class="form-control btn btn-secondary px-3" style="font-color:black;width:160px;background-color:#B15BFF;opacity:0.9">忘記密碼</button></a>
 								</div>
 	            </div>
 	         

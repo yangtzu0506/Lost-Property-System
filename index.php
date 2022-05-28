@@ -109,18 +109,12 @@ echo $displayConfirm;
               <div class="col-lg-3 order-2 order-lg-1">
                 <li class="list-inline-item">
                 <h5 class="text-uppercase mb-4">類別</h5></li>
-               
-
+                <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">認證</strong></div>
                   <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                  <?php if($displayConfirm==0){?>
-                  <li class="mb-2"><input class="form-check-input" type="checkbox" id="checkbox_1" onchange="<?php $displayConfirm=1?>">
-                  <label class="form-check-label" for="checkbox_1">已認證貼文</label></li>
-                
-                  <?php }else{?>
-                  <li class="mb-2"><input class="form-check-input" type="checkbox" id="checkbox_1" checked onchange="<?php $displayConfirm=0?>">
-                  <label class="form-check-label" for="checkbox_1">已認證貼文</label></li>
-                  <?php }?>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?displayConfirm=<?php echo '0'?>">所有貼文</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?displayConfirm=<?php echo '1'?>">已認證貼文</a></li>
                 </ul>
+
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">衣物</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=外套&displayConfirm=<?php echo $displayConfirm?>">外套</a></li>
@@ -143,6 +137,7 @@ echo $displayConfirm;
                 <div class="py-2 px-4 bg-light mb-3"><strong class="small text-uppercase fw-bold">證件</strong></div>
                 <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=學生證&displayConfirm=<?php echo $displayConfirm?>">學生證</a></li>
+                  <li class="mb-2"><a class="reset-anchor" href="index.php?label=身份證&displayConfirm=<?php echo $displayConfirm?>">身份證</a></li>
                   <li class="mb-2"><a class="reset-anchor" href="index.php?label=駕照&displayConfirm=<?php echo $displayConfirm?>">駕照</a></li>
                 </ul>
 
@@ -184,7 +179,6 @@ echo $displayConfirm;
                 <div class="row mb-3 align-items-center">
                   <div class="col-lg-6 mb-2 mb-lg-0">
                   <div class="form-check mb-10">
-                   
                     </div>
                     <!--<p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>-->
                   </div>
@@ -204,30 +198,25 @@ echo $displayConfirm;
                
                 <?php
                 if(isset($labeltxt)){
-                if($displayConfirm==1){
-                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%' order by item_time";}
+                if($displayConfirm==0){
+                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%' order by item_time DESC";}
                 else{
-                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%' and item_confirm=1 order by item_time";}
+                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '1%' and item_confirm=1 order by item_time DESC";}
                                       }
 	              else if($searchtxt!=""){
-                if($displayConfirm==1){
-                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%' order by item_time";}
+                if($displayConfirm==0){
+                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%' order by item_time DESC";}
                 else{
-                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%' and item_confirm=1 order by item_time";}
+                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '1%' and item_confirm=1 order by item_time DESC";}
                                       }
 	              else{
-                if($displayConfirm==1){
-                $sql="select * from item where item_id like '1%' order by item_time";}
+                if($displayConfirm==0){
+                $sql="select * from item where item_id like '1%' order by item_time DESC";}
                 else{
-                $sql="select * from item where item_id like '1%' and item_confirm=1 order by item_time";}
+                $sql="select * from item where item_id like '1%' and item_confirm=1 order by item_time DESC";}
 
 		            }
-                $all="select * from item";
-                $all_rs=mysqli_query($link,$all);
-
                 $rs=mysqli_query($link,$sql);
-	              //$rs=mysql_query($sql,$link);
-
 	              ?>
                 <div class="row">
                   <!-- PRODUCT-->
@@ -269,7 +258,7 @@ echo $displayConfirm;
 
                     </div>
                   </div>
-                  <p align=right class="text-muted" style="margin-right:30px">使用者名稱：<?php echo $account_id?></p>
+                  <p align=right class="text-muted" style="margin-right:30px">刊登者帳戶：<?php echo $account_id?></p>
                 </div>
               </div>
             </div>

@@ -3,6 +3,7 @@
 include "connect.php";
 $searchtxt=$_GET["search"];
 $labeltxt=$_GET["label"];
+$displayConfirm=$_GET["displayConfirm"];
 ?>
 <html>
   <head>
@@ -182,9 +183,8 @@ $labeltxt=$_GET["label"];
                   <div class="col-lg-6">
                     <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
                       <li class="list-inline-item">
-                          <form action="index.php" method=get>
+                          <form action="find.php" method=post>
                           <div class="input-group">
-
                           <input class="form-control form-control-lg" aria-describedby="button-addon2" type=text name="search" value="<?php echo $searchtxt?>">
                           <button class="btn btn-dark" id="button-addon2" type="submit" value="搜尋">搜尋</button>
                           </div>
@@ -196,24 +196,26 @@ $labeltxt=$_GET["label"];
                 <!-- PRODUCT-->
                   <!--  Modal -->
                   
-                <?php
-                 $link=mysqli_connect("localhost","root","12345678","sa");
+                  <?php
                 if(isset($labeltxt)){
-                $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%' order by item_time";
-                }
-	              else if($searchtxt!="")
-	              {
-                
-                $sql="select * from item where item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%' order by item_time";
-        
+                if($displayConfirm==1){
+                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '2%' order by item_time DESC";}
+                else{
+                $sql="select * from item where (item_label like '%$labeltxt%' or item_name like '%$labeltxt%') and item_id like '2%' and item_confirm=1 order by item_time DESC";}
+                                      }
+	              else if($searchtxt!=""){
+                if($displayConfirm==1){
+                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '2%' order by item_time DESC";}
+                else{
+                $sql="select * from item where (item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%') and item_id like '2%' and item_confirm=1 order by item_time DESC";}
+                                      }
+	              else{
+                if($displayConfirm==0){
+                $sql="select * from item where item_id like '2%' order by item_time DESC";}
+                else{
+                $sql="select * from item where item_id like '2%' and item_confirm=1 order by item_time DESC";}
+
 		            }
-	              else
-	              {
-              
-                $sql="select * from item where item_id like '2%' order by item_time";
-		            }
-                $all="select * from item where item_id like '2%' order by item_time";
-                $all_rs=mysqli_query($link,$all);
                 $rs=mysqli_query($link,$sql);
 	              //$rs=mysql_query($sql,$link);
 
