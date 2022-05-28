@@ -10,7 +10,7 @@ $labeltxt=$_GET["label"];
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Boutique | Ecommerce bootstrap template</title>
+    <title>拾在安心校園失物招領系統</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -37,7 +37,7 @@ $labeltxt=$_GET["label"];
       <!-- navbar-->
       <header class="header bg-white">
         <div class="container px-lg-3">
-          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><h3 class="fw-bold text-uppercase text-dark">食在安心校園遺失物管理系統</h3></a>
+          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><h3 class="fw-bold text-uppercase text-dark">拾在安心校園失物招領系統</h3></a>
             <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
@@ -49,7 +49,7 @@ $labeltxt=$_GET["label"];
               </ul>
               <ul class="navbar-nav ms-auto">               
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人化</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
                 </li>
               </ul>
 
@@ -125,7 +125,7 @@ $labeltxt=$_GET["label"];
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
-                    <li class="breadcrumb-item"><a class="text-dark" href="index.php">首頁</a></li>
+                    <li class="breadcrumb-item"><a class="text-dark" href="">管理區</a></li>
                     <li class="breadcrumb-item active" aria-current="page">下架區</li>
                   </ol>
                 </nav>
@@ -257,7 +257,7 @@ $labeltxt=$_GET["label"];
                     <ul class="pagination justify-content-center justify-content-lg-end">
                       <li class="page-item mx-1"><a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                       <li class="page-item mx-1 active"><a class="page-link" href="#!">1</a></li>
-                      <li class="page-item mx-1"><a class="page-link" href="cart.html">2</a></li>
+                      <li class="page-item mx-1"><a class="page-link" href="">2</a></li>
                       <li class="page-item mx-1"><a class="page-link" href="#!">3</a></li>
                       <li class="page-item ms-1"><a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                     </ul>

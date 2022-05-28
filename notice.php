@@ -10,9 +10,9 @@ if ($record=mysqli_fetch_assoc($rs)){
     $name=$record["account_name"];
     $email=$record["account_email"];
     $subject="拾在安心校園遺失物管理系統通知信";
-    $body=$name."您好:<br/>您於本系統刊登協尋之".$item_name."已找回，請至野聲樓生活輔導組領回，謝謝您的配合。";
+    $body="<strong>".$name."</strong>同學您好:<br/>您於本系統刊登協尋之<strong>".$item_name."</strong>已找回，請至野聲樓生活輔導組領回，謝謝您的配合。";
     
-    header("location:sendEmail.php?name=$name&email=$email&subject=$subject&body=$body");
+    header("location:sendEmail.php?name=$name&email=$email&subject=$subject&body=$body&method=notice");
 
 }else{
 

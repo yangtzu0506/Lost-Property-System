@@ -8,7 +8,7 @@ $labeltxt=$_GET["label"];
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>食在安心校園失物招領系統</title>
+    <title>拾在安心校園失物招領系統</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -35,19 +35,19 @@ $labeltxt=$_GET["label"];
       <!-- navbar-->
       <header class="header bg-white">
         <div class="container px-lg-3">
-          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><h3 class="fw-bold text-uppercase text-dark">食在安心校園遺失物管理系統</h3></a>
+          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><h3 class="fw-bold text-uppercase text-dark">拾在安心校園失物招領系統</h3></a>
             <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
                 <!-- 使用者權限 索引列-->
                <?php if($_SESSION["level"]=='0'){ ?>                       
                 <li class="nav-item"><a class="nav-link" href="index.php">拾獲貼文</a></li>
-                <li class="nav-item"><a class="nav-link active" href="find.php">尋物啟示清單</a></li>
+                <li class="nav-item"><a class="nav-link active" href="find.php">尋物啟事清單</a></li>
                 <li class="nav-item"><a class="nav-link"  href="post.php">發布貼文</a></li>
               </ul>
               <ul class="navbar-nav ms-auto">               
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="user.php">個人化</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
                 </li>
               </ul>
 
@@ -197,7 +197,7 @@ $labeltxt=$_GET["label"];
                   <!--  Modal -->
                   
                 <?php
-                // $link=mysqli_connect("localhost","root","","sa");
+                 $link=mysqli_connect("localhost","root","12345678","sa");
                 if(isset($labeltxt)){
                 $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%' order by item_time";
                 }

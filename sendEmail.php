@@ -9,7 +9,7 @@ if(isset($_GET['name']) && isset($_GET['email'])){
     $email = $_GET['email'];
     $subject = $_GET['subject'];
     $body = $_GET['body'];
-
+    echo $email;
     require_once "PHPMailer/PHPMailer.php";
     require_once "PHPMailer/SMTP.php";
     require_once "PHPMailer/Exception.php";
@@ -33,12 +33,12 @@ if(isset($_GET['name']) && isset($_GET['email'])){
     $mail->Body = $body;
     
     if($mail->send()){
-        if($method="validate"){
-        echo "<script>location.href='emailcheck.php'</script>";
+        if($method=="validate"){
+        echo "<script>location.href='login/emailcheck.php'</script>";
         }
-        $status = "success";
-        $response = "Email is sent!";
+        else if($method=="notice"){
         echo "<script>alert('通知成功!');location.href='end_case.php'</script>";
+        }
     }
     else
     {

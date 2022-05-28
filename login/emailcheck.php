@@ -36,7 +36,7 @@
 	            </div>
 				<div class="row">
 				<div class="form-group col-lg-8" >
-	            	<input type="text" class="form-control" name="validate" placeholder="請輸入驗證碼" required style="background-color: rgba(255,255,255,0.2);">
+	            	<input type="text" class="form-control" name="validate" placeholder="請輸入驗證碼" style="background-color: rgba(255,255,255,0.2);">
 				</div>
 				<div class="form-group col-lg-4" >
 					<button class="form-control btn-primary" style="width:160px;background-color: rgba(255,255,255,0.2);" onclick="javascript:location.href='validate.php'">重新發送驗證碼</button>
