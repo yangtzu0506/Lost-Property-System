@@ -16,7 +16,7 @@ if(!isset($_SESSION["level"])){
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>食在安心校園失物招領系統</title>
+    <title>拾在安心校園失物招領系統</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -42,7 +42,7 @@ if(!isset($_SESSION["level"])){
       <!-- navbar-->
       <header class="header bg-white">
         <div class="container px-lg-3">
-          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><h3 class="fw-bold text-uppercase text-dark">食在安心校園遺失物管理系統</h3></a>
+          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><h3 class="fw-bold text-uppercase text-dark">拾在安心校園失物招領系統</h3></a>
             <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
@@ -54,7 +54,7 @@ if(!isset($_SESSION["level"])){
               </ul>
               <ul class="navbar-nav ms-auto">               
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user me-1 text-gray fw-normal"></i><?php echo $_SESSION["name"];?></a>
-                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="#">個人刊登</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
+                  <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="user.php">個人化</a><a class="dropdown-item border-0 transition-link" href="login/logout.php">登出</a></div>
                 </li>
               </ul>
 
@@ -63,7 +63,7 @@ if(!isset($_SESSION["level"])){
                   <li class="nav-item">
                   <!-- Link--><a class="nav-link" href="index.php">拾獲物管理</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟示管理</a>
+                <li class="nav-item"><a class="nav-link" id="pagesDropdown" href="find.php">尋物啟事管理</a>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理區</a>
                   <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="confirm.php">貼文審核</a><a class="dropdown-item border-0 transition-link" href="post.php">代發貼文</a><a class="dropdown-item border-0 transition-link" href="end_case.php">下架區</a></div>
@@ -129,7 +129,10 @@ if(!isset($_SESSION["level"])){
               </div>
               <div class="col-lg-6 text-lg-end">
                 <nav aria-label="breadcrumb">
-                  
+                <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
+                    <li class="breadcrumb-item"><a class="text-dark" href=""></a></li>
+                    <li class="breadcrumb-item active" aria-current="page">發布貼文</li>
+                  </ol>
                 </nav>
               </div>
             </div>

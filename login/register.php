@@ -2,7 +2,7 @@
 <?php session_start();?>
 <html lang="en">
   <head>
-  	<title>登入</title>
+  	<title>註冊</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -18,7 +18,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<a href="../index.php"><h2 class="heading-section"><strong>失物招領系統</strong></h2></a>
+					<a href="../index.php"><h2 class="heading-section"><strong>拾在安心遺失物管理系統</strong></h2></a>
 				</div>
 			</div>
 			<div class="row justify-content-center">
