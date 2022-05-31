@@ -33,8 +33,9 @@ if($_FILES['item_img']['error'] === UPLOAD_ERR_OK){
 //This gets all the other information from the form
     $file = $_FILES['item_img']['tmp_name'];
     $dest = 'img/' . $_FILES['item_img']['name'];
-    
-    # 將檔案移至指定位置
+    echo $file."<br>";
+    print_r($_FILES);
+    //將檔案移至指定位置
     move_uploaded_file($_FILES["item_img"]["tmp_name"],'img/'.$_FILES["item_img"]["name"]);
     $sql="INSERT INTO item (item_id,item_name,item_text,item_time,item_place,item_label,item_img,item_confirm,account_id) VALUES ($item_id,'$item_name','$item_text','$item_time','$item_place','$item_label','$dest',$item_confirm,$account_id)";
     if(mysqli_query($link,$sql)){ ?>
@@ -46,7 +47,7 @@ if($_FILES['item_img']['error'] === UPLOAD_ERR_OK){
     else{?>
         <script>
         alert("刊登失敗，請檢查內容!");
-        location.href("post.php");
+        location.href="post.php";
         </script>
     <?php }
 
@@ -54,7 +55,7 @@ if($_FILES['item_img']['error'] === UPLOAD_ERR_OK){
     $sql="INSERT INTO item (item_id,item_name,item_text,item_time,item_place,item_label,item_img,item_confirm,account_id) VALUES ($item_id,'$item_name','$item_text','$item_time','$item_place','$item_label','img/no_img.jpg',$item_confirm,$account_id)";
     if(mysqli_query($link,$sql)){ ?>
     <script>
-        alert("上傳成功!");
+        alert("上傳成功!(系統提供預設圖片)");
         location.href="index.php";
     </script>
    <?php }

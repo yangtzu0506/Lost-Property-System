@@ -39,12 +39,12 @@
 	            </div>
 				</form>
 	            <div class="form-group d-md-flex">
-								<div class="w-50 text-md-left">
-								<a href="register.php" style="color:white"><button type="submit" class="form-control btn btn-secondary  px-3" style="font-color:black;width:160px;background-color:#6C6C6C;opacity:0.9">註冊</button></a>
-								</div>
-								<div class="w-50 text-md-right">
-								<a href="#" style="color:white"><button type="submit" class="form-control btn btn-secondary px-3" style="font-color:black;width:160px;background-color:#B15BFF;opacity:0.9">忘記密碼</button></a>
-								</div>
+					<div class="w-50 text-md-left">
+						<a href="register.php" style="color:white"><button type="submit" class="form-control btn btn-secondary  px-3" style="font-color:black;width:160px;background-color:#6C6C6C;opacity:0.9">註冊</button></a>
+					</div>
+					<div class="w-50 text-md-right">
+						<a href="forget.php" style="color:white"><button type="submit" class="form-control btn btn-secondary px-3" style="font-color:black;width:160px;background-color:#B15BFF;opacity:0.9">忘記密碼</button></a>
+					</div>
 	            </div>
 	         
 	          

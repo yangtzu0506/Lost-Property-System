@@ -42,7 +42,7 @@ if(!isset($_SESSION["level"])){
       <!-- navbar-->
       <header class="header bg-white">
         <div class="container px-lg-3">
-          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><h3 class="fw-bold text-uppercase text-dark">拾在安心校園失物招領系統</h3></a>
+          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.php"><h3 class="fw-bold text-uppercase text-dark">拾在安心校園失物招領系統</h3></a>
             <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
@@ -277,67 +277,7 @@ if(!isset($_SESSION["level"])){
                     <textarea class="form-control form-control-lg" type="text" id="describe" name="item_text" placeholder="請輸入物品敘述" value=" "></textarea>
                     
                   </div>
-         
-                  <div class="col-lg-6">
-                    <button class="btn btn-link text-dark p-0 shadow-0" type="button" data-bs-toggle="collapse" data-bs-target="#alternateAddress">
-                      <div class="form-check">
-                        <input class="form-check-input" id="alternateAddressCheckbox" type="checkbox">
-                        <label class="form-check-label" for="alternateAddressCheckbox">Alternate billing address</label>
-                      </div>
-                    </button>
-                  </div>
-                  <div><form id="myform" method="" action="" enctype="multipart/form-data">
-                    
-                    </form></div>
-                  <div class="collapse" id="alternateAddress">
-                    <div class="row gy-3">
-                      <div class="col-12 mt-4">
-                        <h2 class="h4 text-uppercase mb-4">Alternative billing details</h2>
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="firstName2">First name </label>
-                        <input class="form-control form-control-lg" type="text" id="firstName2" placeholder="Enter your first name">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="lastName2">Last name </label>
-                        <input class="form-control form-control-lg" type="text" id="lastName2" placeholder="Enter your last name">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="email2">Email address </label>
-                        <input class="form-control form-control-lg" type="email" id="email2" placeholder="e.g. Jason@example.com">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="phone2">Phone number </label>
-                        <input class="form-control form-control-lg" type="tel" id="phone2" placeholder="e.g. +02 245354745">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="company2">Company name (optional) </label>
-                        <input class="form-control form-control-lg" type="text" id="company2" placeholder="Your company name">
-                      </div>
-                      <div class="col-lg-6 form-group">
-                        <label class="form-label text-sm text-uppercase" for="countryAlt">Country</label>
-                        <select class="country" id="countryAlt" data-customclass="form-control form-control-lg rounded-0">
-                          <option value>Choose your country</option>
-                        </select>
-                      </div>
-                      <div class="col-lg-12">
-                        <label class="form-label text-sm text-uppercase" for="address2">Address line 1 </label>
-                        <input class="form-control form-control-lg" type="text" id="address2" placeholder="House number and street name">
-                      </div>
-                      <div class="col-lg-12">
-                        <label class="form-label text-sm text-uppercase" for="addressalt2">Address line 2 </label>
-                        <input class="form-control form-control-lg" type="text" id="addressalt2" placeholder="Apartment, Suite, Unit, etc (optional)">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="city2">Town/City </label>
-                        <input class="form-control form-control-lg" type="text" id="city2">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="state2">State/County </label>
-                        <input class="form-control form-control-lg" type="text" id="state2">
-                      </div>
-                    </div>
-                  </div>
+                  
                   <div class="col-lg-12 form-group">
                     <button class="btn btn-dark" type="submit">送出</button>
                   </div>
@@ -348,34 +288,39 @@ if(!isset($_SESSION["level"])){
            
         </section>
       </div>
-      <footer class="bg-dark text-white">
+      <footer class="bg-dark text-white" align=center>
         <div class="container py-4">
           <div class="row py-5">
             <div class="col-md-4 mb-3 mb-md-0">
-              <h6 class="text-uppercase mb-3">Customer services</h6>
+              <h6 class="text-uppercase mb-3" style="font-size:25px">校園連結</h6>
               <ul class="list-unstyled mb-0">
-                <li><a class="footer-link" href="#!">Help &amp; Contact Us</a></li>
-                <li><a class="footer-link" href="#!">Returns &amp; Refunds</a></li>
-                <li><a class="footer-link" href="#!">Online Stores</a></li>
-                <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
+                <li><a class="footer-link" href="http://u9.tku.edu.tw/" style="font-size:20px">優久大學聯盟</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=34" style="font-size:18px">公文自動化 &amp; ODF</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=22" style="font-size:18px">高教深耕計畫 &amp; 開放式課程</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=21" style="font-size:18px">WebMail &amp; LDAP</a></li>
+                <li><a class="footer-link" href="http://www.fju.edu.tw/resource.jsp?labelID=27" style="font-size:18px">職涯服務 &amp; 學生會</a></li>
+
               </ul>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
-              <h6 class="text-uppercase mb-3">Company</h6>
+              <h6 class="text-uppercase mb-3" style="font-size:25px">公告資訊</h6>
               <ul class="list-unstyled mb-0">
-                <li><a class="footer-link" href="#!">What We Do</a></li>
-                <li><a class="footer-link" href="#!">Available Services</a></li>
-                <li><a class="footer-link" href="#!">Latest Posts</a></li>
-                <li><a class="footer-link" href="#!">FAQs</a></li>
+                <li><a class="footer-link" href="http://control.fju.edu.tw/" style="font-size:18px">內部控制專區</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/fee/1_1.html" style="font-size:18px">校務財務資訊專區</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=20" style="font-size:18px">政府公告專區</a></li>
+                <li><a class="footer-link" href="http://life.dsa.fju.edu.tw/scholarship.html" style="font-size:18px">獎助學金</a></li>
+                <li><a class="footer-link" href="http://www.secretariat.fju.edu.tw/article.jsp?articleID=8" style="font-size:18px">行事曆</a></li>
               </ul>
             </div>
             <div class="col-md-4">
-              <h6 class="text-uppercase mb-3">Social media</h6>
+              <h6 class="text-uppercase mb-3" style="font-size:25px">快速連結</h6>
               <ul class="list-unstyled mb-0">
-                <li><a class="footer-link" href="#!">Twitter</a></li>
-                <li><a class="footer-link" href="#!">Instagram</a></li>
-                <li><a class="footer-link" href="#!">Tumblr</a></li>
-                <li><a class="footer-link" href="#!">Pinterest</a></li>
+                <li><a class="footer-link" href="http://irb.rdo.fju.edu.tw/" style="font-size:18px">人體研究IRB</a></li>
+                <li><a class="footer-link" href="https://researchinfo.fju.edu.tw/" style="font-size:18px">學術統計資料網</a></li>
+                <li><a class="footer-link" href="http://activity.dsa.fju.edu.tw/ActivityList.jsp" style="font-size:18px">活動報名系統</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=5" style="font-size:18px">輔大媒體家族</a></li>
+                <li><a class="footer-link" href="http://www.cre.fju.edu.tw/" style="font-size:20px">研究倫理中心</a></li>
+
               </ul>
             </div>
           </div>
