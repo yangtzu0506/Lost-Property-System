@@ -37,7 +37,7 @@ $labeltxt=$_GET["label"];
       <!-- navbar-->
       <header class="header bg-white">
         <div class="container px-lg-3">
-          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><h3 class="fw-bold text-uppercase text-dark">拾在安心校園失物招領系統</h3></a>
+          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.php"><h3 class="fw-bold text-uppercase text-dark">拾在安心校園失物招領系統</h3></a>
             <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto">
@@ -269,34 +269,39 @@ $labeltxt=$_GET["label"];
           </div>
         </section>
       </div>
-      <footer class="bg-dark text-white">
+      <footer class="bg-dark text-white" align=center>
         <div class="container py-4">
           <div class="row py-5">
-            <div class="col-md-4 mb-3 mb-md-0">
-              <h6 class="text-uppercase mb-3">Customer services</h6>
+            <div class="col-md-4 mb-3 mb-md-0" >
+              <h6 class="text-uppercase mb-3" style="font-size:25px">校園連結</h6>
               <ul class="list-unstyled mb-0">
-                <li><a class="footer-link" href="#!">Help &amp; Contact Us</a></li>
-                <li><a class="footer-link" href="#!">Returns &amp; Refunds</a></li>
-                <li><a class="footer-link" href="#!">Online Stores</a></li>
-                <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
+                <li><a class="footer-link" href="http://u9.tku.edu.tw/" style="font-size:20px">優久大學聯盟</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=34" style="font-size:18px">公文自動化 &amp; ODF</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=22" style="font-size:18px">高教深耕計畫 &amp; 開放式課程</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=21" style="font-size:18px">WebMail &amp; LDAP</a></li>
+                <li><a class="footer-link" href="http://www.fju.edu.tw/resource.jsp?labelID=27" style="font-size:18px">職涯服務 &amp; 學生會</a></li>
+
               </ul>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
-              <h6 class="text-uppercase mb-3">Company</h6>
+              <h6 class="text-uppercase mb-3" style="font-size:25px">公告資訊</h6>
               <ul class="list-unstyled mb-0">
-                <li><a class="footer-link" href="#!">What We Do</a></li>
-                <li><a class="footer-link" href="#!">Available Services</a></li>
-                <li><a class="footer-link" href="#!">Latest Posts</a></li>
-                <li><a class="footer-link" href="#!">FAQs</a></li>
+                <li><a class="footer-link" href="http://control.fju.edu.tw/" style="font-size:18px">內部控制專區</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/fee/1_1.html" style="font-size:18px">校務財務資訊專區</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=20" style="font-size:18px">政府公告專區</a></li>
+                <li><a class="footer-link" href="http://life.dsa.fju.edu.tw/scholarship.html" style="font-size:18px">獎助學金</a></li>
+                <li><a class="footer-link" href="http://www.secretariat.fju.edu.tw/article.jsp?articleID=8" style="font-size:18px">行事曆</a></li>
               </ul>
             </div>
             <div class="col-md-4">
-              <h6 class="text-uppercase mb-3">Social media</h6>
+              <h6 class="text-uppercase mb-3" style="font-size:25px">快速連結</h6>
               <ul class="list-unstyled mb-0">
-                <li><a class="footer-link" href="#!">Twitter</a></li>
-                <li><a class="footer-link" href="#!">Instagram</a></li>
-                <li><a class="footer-link" href="#!">Tumblr</a></li>
-                <li><a class="footer-link" href="#!">Pinterest</a></li>
+                <li><a class="footer-link" href="http://irb.rdo.fju.edu.tw/" style="font-size:18px">人體研究IRB</a></li>
+                <li><a class="footer-link" href="https://researchinfo.fju.edu.tw/" style="font-size:18px">學術統計資料網</a></li>
+                <li><a class="footer-link" href="http://activity.dsa.fju.edu.tw/ActivityList.jsp" style="font-size:18px">活動報名系統</a></li>
+                <li><a class="footer-link" href="https://www.fju.edu.tw/article.jsp?articleID=5" style="font-size:18px">輔大媒體家族</a></li>
+                <li><a class="footer-link" href="http://www.cre.fju.edu.tw/" style="font-size:20px">研究倫理中心</a></li>
+
               </ul>
             </div>
           </div>
