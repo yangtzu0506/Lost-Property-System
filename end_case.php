@@ -225,8 +225,8 @@ $labeltxt=$_GET["label"];
                         <p class="mb-0 small"><?php echo $id?></p>
                       </td>
                       <td class="ps-0 py-3 border-light" scope="row">
-                        <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" href="detail.html"><img src="<?php echo $img?>" alt="..." width="70"/></a>
-                          <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" href="detail.html"><?php echo $name?></a></strong></div>
+                        <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" href="#"><img src="<?php echo $img?>" alt="..." width="70"/></a>
+                          <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" href="#"><?php echo $name?></a></strong></div>
                         </div>
                       </td>
                       <td class="p-3 align-middle border-light">
@@ -250,7 +250,7 @@ $labeltxt=$_GET["label"];
               </div>
               
 
-              <!-- CART NAV-->
+              <!-- CART NAV
               <div class="bg-light px-4 py-3">
                 <div class="row align-items-center text-center">
                   <nav aria-label="Page navigation example">
@@ -264,7 +264,7 @@ $labeltxt=$_GET["label"];
                   </nav>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- ORDER TOTAL-->
           </div>
         </section>

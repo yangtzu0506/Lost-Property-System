@@ -295,7 +295,7 @@ $displayConfirm=$_GET["displayConfirm"];
       <div class='col-lg-4 col-sm-6'>
           <div class='product text-center'>
               <div class='mb-3 position-relative'>
-                 <div class='badge text-white bg-primary'><?php if($confirm==0){ echo "未認證"; } ?></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" style="width: 304px;height: 334px;" alt='...'></a>
+                 <div class='badge text-white bg-primary'></div><a class='d-block' href='#'><img class='img-fluid w-100' src="<?php echo $img ?>" style="width: 304px;height: 334px;" alt='...'></a>
                     <div class='product-overlay'>
                       <ul class='mb-0 list-inline'>
                     <?php  if($_SESSION["level"]=='1' ){ ?>
