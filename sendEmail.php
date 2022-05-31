@@ -41,7 +41,7 @@ if(isset($_GET['name']) && isset($_GET['email'])){
         echo "<script>alert('通知成功!');location.href='end_case.php'</script>";
         }
         else if($method=="forget"){
-        echo "<script>alert('已發送郵件，請至您的信箱查看密碼');location.href='login.php'</script>";    
+        echo "<script>alert('已發送郵件，請至您的信箱查看密碼');location.href='login/addpassword.php'</script>";    
         }
     }
     else
