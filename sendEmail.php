@@ -13,7 +13,7 @@ if(isset($_GET['name']) && isset($_GET['email'])){
     require_once "PHPMailer/PHPMailer.php";
     require_once "PHPMailer/SMTP.php";
     require_once "PHPMailer/Exception.php";
-
+    
     $mail = new PHPMailer();
 
     //smtp settings
@@ -31,13 +31,17 @@ if(isset($_GET['name']) && isset($_GET['email'])){
     $mail->addAddress($email);
     $mail->Subject = $subject;
     $mail->Body = $body;
-    
+   
     if($mail->send()){
+        
         if($method=="validate"){
         echo "<script>location.href='login/emailcheck.php'</script>";
         }
         else if($method=="notice"){
         echo "<script>alert('通知成功!');location.href='end_case.php'</script>";
+        }
+        else if($method=="forget"){
+        echo "<script>alert('已發送郵件，請至您的信箱查看密碼');location.href='login.php'</script>";    
         }
     }
     else
