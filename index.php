@@ -4,7 +4,7 @@ include "connect.php";
 $searchtxt=$_POST["search"];
 $labeltxt=$_GET["label"];
 $displayConfirm=$_GET["displayConfirm"];
-echo $displayConfirm;
+
 
 ?>
 
