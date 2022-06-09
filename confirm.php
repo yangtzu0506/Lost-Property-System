@@ -4,6 +4,15 @@
 include "connect.php";
 $searchtxt=$_GET["search"];
 $labeltxt=$_GET["label"];
+
+//超過一週未認證下架
+date_default_timezone_set('Asia/Taipei'); //設定時區
+$today = strtotime(date("Y-m-d H:i:s"));
+
+echo $month;
+
+
+
 ?>
   <head>
     <meta charset="utf-8">
@@ -29,6 +38,9 @@ $labeltxt=$_GET["label"];
     <link rel="stylesheet" href="">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   </head>
   <body>
   <div class="page-holder">
@@ -134,21 +146,42 @@ $labeltxt=$_GET["label"];
         <section class="py-5">
           <div class="row mb-3 align-items-center">
           <div class="col-lg-6"><h2 class="h5 text-uppercase mb-4">待審核貼文</h2></div>
-          <div class="col-lg-6">
-            <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
-            <li class="list-inline-item">
-          <form action="confirm.php" method=get>
-            <div class="input-group">
-              <input class="form-control form-control-lg" aria-describedby="button-addon2" type=text name="search" value="<?php echo $searchtxt?>">
-              <button class="btn btn-dark" id="button-addon2" type="submit" value="搜尋">搜尋</button>
-              </div>
-          </form>
-          </li></ul></div></div>
-          <div class="row">
+         
             <div class="col-lg-12 mb-5 mb-lg-0">
               <!-- CART TABLE-->
               <div class="table-responsive mb-4">
-                <table class="table text-nowrap">
+              <script>
+                 $(document).ready( function () {
+                  $('#confirm').DataTable({info: false,
+                    "order": [[ 3, "ASC" ]],
+                    language: {
+                    lengthMenu: "",
+                    sProcessing: "處理中...",
+                    sZeroRecords: "没有匹配结果",
+                    sInfo: "目前有 _MAX_ 筆資料",
+                    sInfoEmpty: "目前共有 0 筆紀錄",
+                    sInfoFiltered: " ",
+                    sInfoPostFix: "",
+                    sSearch: "尋找:",
+                    sUrl: "",
+                    sEmptyTable: "尚未有資料紀錄存在",
+                    sLoadingRecords: "載入資料中...",
+                    sInfoThousands: ",",
+                    oPaginate: {
+                      sFirst: "首頁",
+                      sPrevious: "上一頁",
+                      sNext: "下一頁",
+                      sLast: "末頁",
+                    },
+                    order: [[0, "desc"]],
+                    oAria: {
+                      sSortAscending: ": 以升序排列此列",
+                      sSortDescending: ": 以降序排列此列",
+                    },
+                  }});
+                  } ); 
+                </script>
+                <table class="table text-nowrap" id="confirm">
                   <thead class="bg-light">
                     <tr>
                       <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">貼文編號</strong></th>
@@ -161,23 +194,25 @@ $labeltxt=$_GET["label"];
                   <tbody class="border-0">
                   <?php
                 if(isset($labeltxt)){
-                $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
+                $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%' order by item_time desc";
                 }
 	              else if($searchtxt!="")
 	              {
                 
-                $sql="select * from item where item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%'";
+                $sql="select * from item where item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%' order by item_time desc";
         
 		            }
 	              else
 	              {
               
-                $sql="select * from item";
+                $sql="select * from item order by item_time DESC";
 		            }
-                $delete_item = "delete * from item";
+                $delete_item = "delete * from item order by item_time desc";
                
                 $rs=mysqli_query($link,$sql);
 	              //$rs=mysql_query($sql,$link);
+                
+                
 
 	              ?>
                 <div class="row">
@@ -193,6 +228,22 @@ $labeltxt=$_GET["label"];
                       $label=$record[5];
                       $img=$record[6];
                       $confirm = $record[7];
+                      //算時間
+                      $secondDay=strtotime($time);
+                      $month=($today-$secondDay)/3600/24/30;
+                      $day=($today-$secondDay)/3600/24;
+
+                      if($day>7 && $confirm==0){
+                        $sql_day="delete from item where item_id=$id";
+                        mysqli_query($link,$sql_day);
+                      }
+                      else if($month>3){
+                        $sql_day="delete from item where item_id=$id";
+                        mysqli_query($link,$sql_day);
+                      }else if($month >1 && $confirm==1){
+                        $sql_day="update item set item_confirm = 2 where item_id=$id";
+                        mysqli_query($link,$sql_day);
+                      }
                       ?>
                       <?php if($confirm==0){ ?>
 
@@ -252,19 +303,7 @@ $labeltxt=$_GET["label"];
                 </table>
               </div>
               <!-- CART NAV-->
-              <div class="bg-light px-4 py-3">
-                <div class="row align-items-center text-center">
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center justify-content-lg-end">
-                      <li class="page-item mx-1"><a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                      <li class="page-item mx-1 active"><a class="page-link" href="#!">1</a></li>
-                      <li class="page-item mx-1"><a class="page-link" href="">2</a></li>
-                      <li class="page-item mx-1"><a class="page-link" href="#!">3</a></li>
-                      <li class="page-item ms-1"><a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
+             
             </div>
             <!-- ORDER TOTAL-->
           </div>
@@ -320,6 +359,7 @@ $labeltxt=$_GET["label"];
         </div>
       </footer>
       <!-- JavaScript files-->
+      <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="vendor/glightbox/js/glightbox.min.js"></script>
       <script src="vendor/nouislider/nouislider.min.js"></script>

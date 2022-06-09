@@ -6,7 +6,7 @@ $searchtxt=$_GET["search"];
 $labeltxt=$_GET["label"];
 
 ?>
-</script>
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,6 +31,10 @@ $labeltxt=$_GET["label"];
     <link rel="stylesheet" href="">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+      
   </head>
   <body>
   <div class="page-holder">
@@ -139,7 +143,39 @@ $labeltxt=$_GET["label"];
             <div class="col-lg-12 mb-5 mb-lg-0">
               <!-- CART TABLE-->
               <div class="table-responsive mb-4">
-                <table class="table text-nowrap">
+                <script>
+                 $(document).ready( function () {
+                  $('#endcase').DataTable(
+                    {info: false,
+                      "order": [[ 2, "desc" ]],
+                    language: {
+                    lengthMenu: "",
+                    sProcessing: "處理中...",
+                    sZeroRecords: "没有匹配结果",
+                    sInfo: "目前有 _MAX_ 筆資料",
+                    sInfoEmpty: "目前共有 0 筆紀錄",
+                    sInfoFiltered: " ",
+                    sInfoPostFix: "",
+                    sSearch: "尋找:",
+                    sUrl: "",
+                    sEmptyTable: "尚未有資料紀錄存在",
+                    sLoadingRecords: "載入資料中...",
+                    sInfoThousands: ",",
+                    oPaginate: {
+                      sFirst: "首頁",
+                      sPrevious: "上一頁",
+                      sNext: "下一頁",
+                      sLast: "末頁",
+                    },
+                    order: [[0, "desc"]],
+                    oAria: {
+                      sSortAscending: ": 以升序排列此列",
+                      sSortDescending: ": 以降序排列此列",
+                    },
+                  }});
+                  } ); 
+                </script>
+                <table class="table text-nowrap" id="endcase">
                   <thead class="bg-light">
                     <tr>
                       <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">貼文編號</strong></th>
@@ -152,23 +188,11 @@ $labeltxt=$_GET["label"];
                   <tbody class="border-0">
                   <?php
                 // $link=mysqli_connect("localhost","root","12345678","sa");
-                if(isset($labeltxt)){
-                $sql="select * from item where item_label like '%$labeltxt%' or item_name like '%$labeltxt%'";
-                }
-	              else if($searchtxt!="")
-	              {
                 
-                $sql="select * from item where item_name like '%$searchtxt%' or item_place like '%$searchtxt%' or item_text like '%$searchtxt%' or item_time like '%$searchtxt%'";
-        
-		            }
-	              else
-	              {
-              
-                $sql="select * from item";
-		            }
-                $delete_item = "delete * from item";
-                $all="select * from item";
-                $all_rs=mysqli_query($link,$all);
+                $sql="select * from item order by item_time DESC";
+		            
+                $delete_item = "delete * from item ";
+                
                 $rs=mysqli_query($link,$sql);
 	              //$rs=mysql_query($sql,$link);
 
@@ -209,10 +233,11 @@ $labeltxt=$_GET["label"];
                     <div class="col-sm-7">
                       <p class="text-mb mb-4">遺失地點：<?php echo $place?></p>
                       <p class="text-mb mb-4">標籤：<?php echo $label?></p>
-                      </div>
+                      </div>     
                     </div>
                     <div id="button"><center><a class="btn btn-sm btn-outline-dark" href="end_case/end_case_update.php?id=<?php echo $id ?>">復原</a><a class="btn btn-sm btn-outline-dark" href="end_case/end_case_delete.php?id=<?php echo $id ?>">刪除</a><center></div>
                   </div>
+                  <p align=right class="text-muted" style="margin-right:30px">刊登者帳戶：<?php echo $account_id?></p>
                 </div>
               </div>
             </div>
@@ -319,12 +344,14 @@ $labeltxt=$_GET["label"];
         </div>
       </footer>
       <!-- JavaScript files-->
+      <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="vendor/glightbox/js/glightbox.min.js"></script>
       <script src="vendor/nouislider/nouislider.min.js"></script>
       <script src="vendor/swiper/swiper-bundle.min.js"></script>
       <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
       <script src="js/front.js"></script>
+     
       <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite - 
@@ -343,6 +370,7 @@ $labeltxt=$_GET["label"];
             document.body.insertBefore(div, document.body.childNodes[0]);
             }
         }
+        
         // this is set to BootstrapTemple website as you cannot 
         // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
         // while using file:// protocol
